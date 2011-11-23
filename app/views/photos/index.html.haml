@@ -5,13 +5,15 @@
     %th
     %th
     %th
+    %th
 
   - @photos.each do |photo|
     %tr
+      %td= photo.file
       %td= link_to 'Show', photo
-      %td= link_to 'Edit', edit_photo_path(photo)
+      %td= link_to 'Edit', edit_photo_path(photo), 'data-ajax' => 'false'
       %td= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Photo', new_photo_path
+= link_to 'New Photo', new_photo_path, 'data-ajax' => 'false'

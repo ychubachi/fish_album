@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
     @photos = Photo.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render layout: 'mobile' } # index.html.erb
       format.json { render json: @photos }
     end
   end
@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render layout: 'mobile' } # show.html.erb
       format.json { render json: @photo }
     end
   end

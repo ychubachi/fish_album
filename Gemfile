@@ -36,3 +36,4 @@ group :test, :development do
 end
 
 gem 'carrierwave'
+gem 'rmagick'

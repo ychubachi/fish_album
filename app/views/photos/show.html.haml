@@ -1,5 +1,8 @@
 %p#notice= notice
 
+%p
+  %p File:
+  = image_tag(@photo.file_url, width: '100%') if @photo.file?
 
 = link_to 'Edit', edit_photo_path(@photo)
 \|
