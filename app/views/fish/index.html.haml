@@ -1,0 +1,29 @@
+%h1 Listing fish
+
+%table
+  %tr
+    %th Family jp
+    %th Name jp
+    %th Nickname jp
+    %th Family en
+    %th Name en
+    %th Name la
+    %th
+    %th
+    %th
+
+  - @fish.each do |fish|
+    %tr
+      %td= fish.family_jp
+      %td= fish.name_jp
+      %td= fish.nickname_jp
+      %td= fish.family_en
+      %td= fish.name_en
+      %td= fish.name_la
+      %td= link_to 'Show', fish
+      %td= link_to 'Edit', edit_fish_path(fish)
+      %td= link_to 'Destroy', fish, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Fish', new_fish_path

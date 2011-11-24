@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123155628) do
+ActiveRecord::Schema.define(:version => 20111124134022) do
+
+  create_table "fish", :force => true do |t|
+    t.string   "family_jp"
+    t.string   "name_jp"
+    t.string   "nickname_jp"
+    t.string   "family_en"
+    t.string   "name_en"
+    t.string   "name_la"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "photos", :force => true do |t|
     t.datetime "created_at"
