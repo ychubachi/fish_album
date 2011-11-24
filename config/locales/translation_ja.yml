@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      fish: 魚  #g
+      photo: photo  #g
+
+    attributes:
+      fish:
+        family_jp: 科  #g
+        name_jp: 和名  #g
+        nickname_jp: 通称  #g
+        family_en: 科（英語）  #g
+        name_en: 英名  #g
+        name_la: 学名  #g
+
+      photo:
+        file: file  #g
