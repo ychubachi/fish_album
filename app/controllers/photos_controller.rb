@@ -1,11 +1,19 @@
 class PhotosController < ApplicationController
+
   # GET /photos
   # GET /photos.json
   def index
     @photos = Photo.all
+    @admin = params[:admin]
 
     respond_to do |format|
-      format.html { render layout: 'mobile' } # index.html.erb
+      format.html do
+        if @admin
+          render # show.html.erb
+        else
+          render layout: 'mobile' # show.html.erb
+        end
+      end
       format.json { render json: @photos }
     end
   end
@@ -14,9 +22,16 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
+    @admin = params[:admin]
 
     respond_to do |format|
-      format.html { render layout: 'mobile' } # show.html.erb
+      format.html do
+        if @admin
+          render # show.html.erb
+        else
+          render layout: 'mobile' # show.html.erb
+        end
+      end
       format.json { render json: @photo }
     end
   end
@@ -76,7 +91,7 @@ class PhotosController < ApplicationController
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to photos_url }
+      format.html { redirect_to "#{photos_url}?admin=yes" }
       format.json { head :ok }
     end
   end

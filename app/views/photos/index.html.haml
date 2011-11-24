@@ -3,17 +3,23 @@
 %table
   %tr
     %th
-    %th
-    %th
-    %th
-
+    - if @admin
+      %th
+      %th
+      %th
+    - else
+      %th
   - @photos.each do |photo|
     %tr
-      %td= photo.file
-      %td= link_to 'Show', photo
-      %td= link_to 'Edit', edit_photo_path(photo), 'data-ajax' => 'false'
-      %td= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete
+      %td= image_tag(photo.file.thumb.url, width: '100%') if photo.file?
+      - if @admin
+        %td= link_to 'Show', "#{photo_path(photo)}?admin=yes"
+        %td= link_to 'Edit', "#{edit_photo_path(photo)}?admin=yes", 'data-ajax' => 'false'
+        %td= link_to 'Destroy', "#{photo_path(photo)}?admin=yes", confirm: 'Are you sure?', method: :delete
+      - else
+        %td= link_to 'Show', photo
 
 %br
 
-= link_to 'New Photo', new_photo_path, 'data-ajax' => 'false'
+- if @admin
+  = link_to 'New Photo', new_photo_path, 'data-ajax' => 'false'

@@ -4,6 +4,9 @@
   %p File:
   = image_tag(@photo.file_url, width: '100%') if @photo.file?
 
-= link_to 'Edit', edit_photo_path(@photo)
-\|
-= link_to 'Back', photos_path
+- if @admin
+  = link_to 'Edit', edit_photo_path(@photo)
+  \|
+  = link_to 'Back', photos_path
+- else 
+  = link_to 'Back', photos_path, 'data-rel' => 'back'

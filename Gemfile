@@ -36,4 +36,5 @@ group :test, :development do
 end
 
 gem 'carrierwave'
-gem 'rmagick'
+# gem 'rmagick'
+gem 'mini_magick'
