@@ -39,4 +39,6 @@ gem 'carrierwave'
 # gem 'rmagick'
 gem 'mini_magick'
 
-gem 'i18n'
+group :development do
+  gem 'i18n_generators'
+end
