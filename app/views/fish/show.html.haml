@@ -1,23 +1,24 @@
 %p#notice= notice
 
-%p
-  %b Family jp:
-  = @fish.family_jp
-%p
-  %b Name jp:
-  = @fish.name_jp
-%p
-  %b Nickname jp:
-  = @fish.nickname_jp
-%p
-  %b Family en:
-  = @fish.family_en
-%p
-  %b Name en:
-  = @fish.name_en
-%p
-  %b Name la:
-  = @fish.name_la
+%table
+  %tr
+    %td= t 'activerecord.attributes.fish.family_jp'
+    %td= @fish.family_jp
+  %tr
+    %td= t 'activerecord.attributes.fish.name_jp'
+    %td= @fish.name_jp
+  %tr
+    %td= t 'activerecord.attributes.fish.nickname_jp'
+    %td= @fish.nickname_jp
+  %tr
+    %td= t 'activerecord.attributes.fish.family_en'
+    %td= @fish.family_en
+  %tr
+    %td= t 'activerecord.attributes.fish.name_en'
+    %td= @fish.name_en
+  %tr
+    %td= t 'activerecord.attributes.fish.name_la'
+    %td= @fish.name_la
 
 = link_to 'Edit', edit_fish_path(@fish)
 \|
