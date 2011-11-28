@@ -1,8 +1,8 @@
 FishAlbum::Application.routes.draw do
-  resources :fish
-
-  resources :photos
-
-  get "mobile/index"
-  root to: "photos#index"
+  resources :families do
+    resources :fish do
+      resources :photos
+    end
+  end
+  root to: "families#index"
 end

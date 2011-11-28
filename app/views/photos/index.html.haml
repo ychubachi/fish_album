@@ -1,9 +1,11 @@
 %h1 Listing photos
 
+%p= @mobile
+
 %table
   %tr
     %th
-    - if @admin
+    - if @mobile.blank?
       %th
       %th
       %th
@@ -12,14 +14,18 @@
   - @photos.each do |photo|
     %tr
       %td= image_tag(photo.file.thumb.url, width: '100%') if photo.file?
-      - if @admin
-        %td= link_to 'Show', "#{photo_path(photo)}?admin=yes"
-        %td= link_to 'Edit', "#{edit_photo_path(photo)}?admin=yes", 'data-ajax' => 'false'
-        %td= link_to 'Destroy', "#{photo_path(photo)}?admin=yes", confirm: 'Are you sure?', method: :delete
+      - if @mobile.blank?
+        %td= link_to 'Show', family_fish_photo_path(@family, @fish, photo)
+        %td= link_to 'Edit', "#{edit_family_fish_photo_path(@family, @fish, photo)}?admin=yes", 'data-ajax' => 'false'
+        %td= link_to 'Destroy', "#{family_fish_photo_path(@family, @fish, photo)}?admin=yes", confirm: 'Are you sure?', method: :delete
       - else
-        %td= link_to 'Show', photo
+        %td= link_to 'Show', "#{family_fish_photo_path(@family, @fish, photo)}?mobile=yes"
 
 %br
 
-- if @admin
-  = link_to 'New Photo', new_photo_path, 'data-ajax' => 'false'
+= link_to 'Families', families_path
+|
+= link_to 'Fish', family_fish_index_path(@family)
+- if @mobile.blank?
+  |
+  = link_to 'New Photo', new_family_fish_photo_path(@family, @fish), 'data-ajax' => 'false'

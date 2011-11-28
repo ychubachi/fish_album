@@ -4,6 +4,9 @@ require 'nkf'
 class Fish < ActiveRecord::Base
   include NKF
 
+  belongs_to :family
+  has_many :photo
+
   before_validation do |fish|
     logger.debug 'before_validation'
     fish.family_jp = nkf('-w --katakana', fish.family_jp)

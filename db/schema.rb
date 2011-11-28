@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111124134022) do
+ActiveRecord::Schema.define(:version => 20111128064501) do
+
+  create_table "families", :force => true do |t|
+    t.string   "name_jp"
+    t.string   "name_en"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "fish", :force => true do |t|
     t.string   "family_jp"
@@ -22,12 +29,14 @@ ActiveRecord::Schema.define(:version => 20111124134022) do
     t.string   "name_la"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "family_id"
   end
 
   create_table "photos", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "file"
+    t.integer  "fish_id"
   end
 
 end

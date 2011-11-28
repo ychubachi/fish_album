@@ -1,4 +1,5 @@
-= form_for @fish do |f|
+- puts @family.to_yaml
+= form_for([@family, @fish]) do |f|
   -if @fish.errors.any?
     #error_explanation
       %h2= "#{pluralize(@fish.errors.count, "error")} prohibited this fish from being saved:"

@@ -3,12 +3,14 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
-    @admin = params[:admin]
+    @family = Family.find(params[:family_id])
+    @fish = Fish.find(params[:fish_id])
+    @photos = Photo.where(fish_id: params[:fish_id])
+    @mobile = params[:mobile]
 
     respond_to do |format|
       format.html do
-        if @admin
+        if @mobile.blank?
           render # show.html.erb
         else
           render layout: 'mobile' # show.html.erb
@@ -21,12 +23,14 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @family = Family.find(params[:family_id])
+    @fish = Fish.find(params[:fish_id])
     @photo = Photo.find(params[:id])
-    @admin = params[:admin]
+    @mobile = params[:mobile]
 
     respond_to do |format|
       format.html do
-        if @admin
+        if @mobile.blank?
           render # show.html.erb
         else
           render layout: 'mobile' # show.html.erb
@@ -39,6 +43,8 @@ class PhotosController < ApplicationController
   # GET /photos/new
   # GET /photos/new.json
   def new
+    @family = Family.find(params[:family_id])
+    @fish = Fish.find(params[:fish_id])
     @photo = Photo.new
 
     respond_to do |format|
@@ -49,17 +55,22 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    @family = Family.find(params[:family_id])
+    @fish = Fish.find(params[:fish_id])
     @photo = Photo.find(params[:id])
   end
 
   # POST /photos
   # POST /photos.json
   def create
+    @family = Family.find(params[:family_id])
+    @fish = Fish.find(params[:fish_id])
     @photo = Photo.new(params[:photo])
+    @photo.fish = @fish
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        format.html { redirect_to family_fish_photos_path(@family, @fish), notice: 'Photo was successfully created.' }
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
@@ -71,11 +82,13 @@ class PhotosController < ApplicationController
   # PUT /photos/1
   # PUT /photos/1.json
   def update
+    @family = Family.find(params[:family_id])
+    @fish = Fish.find(params[:fish_id])
     @photo = Photo.find(params[:id])
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to family_fish_photos_path(@family, @fish), notice: 'Photo was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -87,11 +100,13 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+    @family = Family.find(params[:family_id])
+    @fish = Fish.find(params[:fish_id])
     @photo = Photo.find(params[:id])
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to "#{photos_url}?admin=yes" }
+      format.html { redirect_to family_fish_photos_path(@family,@fish) }
       format.json { head :ok }
     end
   end
