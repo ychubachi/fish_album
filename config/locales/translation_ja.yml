@@ -5,8 +5,10 @@ ja:
       photo: photo  #g
 
     attributes:
+      family:
+        name_jp: 科  #g
+        name_en: family  #g
       fish:
-        family_jp: 科  #g
         name_jp: 和名  #g
         nickname_jp: 通称  #g
         family_en: 科（英語）  #g

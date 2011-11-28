@@ -101,6 +101,8 @@ class PhotosController < ApplicationController
     @family = Family.find(params[:family_id])
     @fish = Fish.find(params[:fish_id])
     @photo = Photo.find(params[:id])
+
+    @photo.remove_file!
     @photo.destroy
 
     respond_to do |format|

@@ -9,6 +9,8 @@
     = f.label :file
     = image_tag(@photo.file_url) if @photo.file?
     = f.file_field :file
+    = f.label :url
+    = f.text_field :remote_file_url
     = f.hidden_field :file_cache
   .actions
     = f.submit 'Save'
