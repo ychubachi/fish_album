@@ -16,9 +16,7 @@
 
 %br
 
-= link_to 'Families', families_path
-|
-= link_to 'Fish', family_fish_index_path(@family)
+= link_to 'Back', family_fish_index_path(@family), 'data-rel' => 'back', 'data-role' => 'button', 'data-inline' => 'true'
 - if admin?
   |
   = link_to 'New Photo', new_family_fish_photo_path(@family, @fish)

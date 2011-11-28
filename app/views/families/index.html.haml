@@ -1,19 +1,14 @@
-%table
-  %tr
-    %th= t 'activerecord.attributes.family.name_jp'
-    %th= t 'activerecord.attributes.family.name_en'
-    - if admin?
-      %th
-      %th
-      %th
+
+%ul{'data-role' => 'listview'}
   - @families.each do |family|
-    %tr
-      %td= link_to family.name_jp, family_fish_index_path(family)
-      %td= link_to family.name_en, family_fish_index_path(family)
+    %li
+      %a{href: family_fish_index_path(family)}
+        %p= family.name_jp
+        %p= family.name_en
       - if admin?
-        %td= link_to 'Show', family
-        %td= link_to 'Edit', edit_family_path(family)
-        %td= link_to 'Destroy', family, :confirm => 'Are you sure?', :method => :delete
+        %a= link_to 'Show', family
+        %a= link_to 'Edit', edit_family_path(family)
+        %a= link_to 'Destroy', family, :confirm => 'Are you sure?', :method => :delete
 - if admin?
   %br
   = link_to 'New Family', new_family_path
