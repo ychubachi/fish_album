@@ -12,9 +12,10 @@
     %th= t 'activerecord.attributes.fish.nickname_jp'
     %th= t 'activerecord.attributes.fish.name_en'
     %th= t 'activerecord.attributes.fish.name_la'
-    %th
-    %th
-    %th
+    - if admin?
+      %th
+      %th
+      %th
     %th
   - @fish.each do |fish|
     %tr
@@ -22,13 +23,14 @@
       %td= fish.nickname_jp
       %td= fish.name_en
       %td= fish.name_la
-      %td= link_to 'Show', family_fish_path(@family, fish)
-      %td= link_to 'Edit', edit_family_fish_path(@family, fish)
-      %td= link_to 'Destroy', family_fish_path(@family, fish), :confirm => 'Are you sure?', :method => :delete
+      - if admin?
+        %td= link_to 'Show', family_fish_path(@family, fish)
+        %td= link_to 'Edit', edit_family_fish_path(@family, fish)
+        %td= link_to 'Destroy', family_fish_path(@family, fish), :confirm => 'Are you sure?', :method => :delete
       %td= link_to 'Photo', family_fish_photos_path(@family, fish)
-%br
 
+%br
 = link_to 'Families', families_path
-- if @mobile.blank?
+- if admin?
   |
   = link_to 'New Fish', new_family_fish_path

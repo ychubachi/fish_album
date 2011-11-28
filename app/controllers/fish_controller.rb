@@ -6,7 +6,11 @@ class FishController < ApplicationController
     @fish = Fish.where(family_id: params[:family_id])
 
     respond_to do |format|
-      format.html # index.html.erb
+      if admin?
+        format.html # index.html.erb
+      else
+        format.html { render layout: 'mobile' }
+      end
       format.json { render json: @fish }
     end
   end

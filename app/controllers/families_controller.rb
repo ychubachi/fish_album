@@ -5,7 +5,11 @@ class FamiliesController < ApplicationController
     @families = Family.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      if admin?
+        format.html # index.html.erb
+      else
+        format.html { render layout: 'mobile' }
+      end
       format.json { render json: @families }
     end
   end

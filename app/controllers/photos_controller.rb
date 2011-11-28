@@ -6,14 +6,13 @@ class PhotosController < ApplicationController
     @family = Family.find(params[:family_id])
     @fish = Fish.find(params[:fish_id])
     @photos = Photo.where(fish_id: params[:fish_id])
-    @mobile = params[:mobile]
 
     respond_to do |format|
       format.html do
-        if @mobile.blank?
-          render # show.html.erb
+        if admin?
+          render
         else
-          render layout: 'mobile' # show.html.erb
+          render layout: 'mobile'
         end
       end
       format.json { render json: @photos }
@@ -26,11 +25,10 @@ class PhotosController < ApplicationController
     @family = Family.find(params[:family_id])
     @fish = Fish.find(params[:fish_id])
     @photo = Photo.find(params[:id])
-    @mobile = params[:mobile]
 
     respond_to do |format|
       format.html do
-        if @mobile.blank?
+        if admin?
           render # show.html.erb
         else
           render layout: 'mobile' # show.html.erb

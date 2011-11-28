@@ -4,18 +4,20 @@
   %tr
     %th Name jp
     %th Name en
-    %th
-    %th
-    %th
+    - if admin?
+      %th
+      %th
+      %th
     %th
   - @families.each do |family|
     %tr
       %td= family.name_jp
       %td= family.name_en
-      %td= link_to 'Show', family
-      %td= link_to 'Edit', edit_family_path(family)
-      %td= link_to 'Destroy', family, :confirm => 'Are you sure?', :method => :delete
+      - if admin?
+        %td= link_to 'Show', family
+        %td= link_to 'Edit', edit_family_path(family)
+        %td= link_to 'Destroy', family, :confirm => 'Are you sure?', :method => :delete
       %td= link_to 'Fish', family_fish_index_path(family)
-%br
-
-= link_to 'New Family', new_family_path
+- if admin?
+  %br
+  = link_to 'New Family', new_family_path
