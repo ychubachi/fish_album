@@ -1,23 +1,25 @@
 %div{"data-role" => "header"}
   %h1
-    Admin:
-    = @family.name_jp
-    \/
-    = @family.name_en
+    = "#{@family.name_jp}科の魚一覧"
 %div{"data-role" => "content"}
-  %ul{'data-role' => 'listview'}
+  %table
+    %tr
+      %th 和名
+      %th 英名
+      %th 学名
+      %th
+      %th      
+      %th      
+      %th      
     - @fish.each do |fish|
-      %li
-        %a{ href: family_fish_photos_path(@family, fish) }
-          %p= fish.name_jp
-          %p= fish.name_en
-          %p= fish.name_la
-        - if admin?
-          %td= link_to 'Show', family_fish_path(@family, fish)
-          %td= link_to 'Edit', edit_family_fish_path(@family, fish)
-          %td= link_to 'Destroy', family_fish_path(@family, fish), :confirm => 'Are you sure?', :method => :delete
+      %tr
+        %td= fish.name_jp
+        %td= fish.name_en
+        %td= fish.name_la
+        %td= link_to '表示', family_fish_path(@family, fish)
+        %td= link_to '編集', edit_family_fish_path(@family, fish)
+        %td= link_to '削除', family_fish_path(@family, fish), :confirm => 'まじですか？', :method => :delete
+        %td= link_to '一覧', family_fish_photos_path(@family, fish)
 
-  %br
-  - if admin?
-    |
-    = link_to 'New Fish', new_family_fish_path
+= link_to '科一覧', families_path
+= link_to '新規（魚）', new_family_fish_path

@@ -1,26 +1,22 @@
-%div{"data-role" => "header", 'data-position' => 'inline'}
-  %h1
-    Admin:
-    = @fish.name_jp
-    \/
-    = @fish.name_en
+%div{"data-role" => "header"}
+  %h1= "#{@fish.name_jp}の写真一覧"
 %div{"data-role" => "content"}
   %table
     %tr
+      %th ID
+      %th 写真
       %th
-      - if admin?
-        %th
-        %th
-        %th
+      %th
+      %th
     - @photos.each do |photo|
       %tr
-        %td= link_to image_tag(photo.file.thumb.url), [@family, @fish, photo]
-        - if admin?
-          %td= link_to 'Edit', edit_family_fish_photo_path(@family, @fish, photo), 'data-ajax' => 'false'
-          %td= link_to 'Destroy', family_fish_photo_path(@family, @fish, photo), confirm: 'Are you sure?', method: :delete
+        %td= photo.id
+        %td= image_tag(photo.file.thumb.url)
+        %td= link_to '表示', [@family, @fish, photo]
+        %td= link_to '編集', edit_family_fish_photo_path(@family, @fish, photo), 'data-ajax' => 'false'
+        %td= link_to '削除', family_fish_photo_path(@family, @fish, photo), confirm: 'まじですか？', method: :delete
 
-  %br
-
-  - if admin?
-    |
-    = link_to 'New Photo', new_family_fish_photo_path(@family, @fish)
+%br
+  = link_to '科一覧', families_path
+  = link_to '魚一覧', family_fish_index_path(@family)
+  = link_to '新規（写真）', new_family_fish_photo_path(@family, @fish)
