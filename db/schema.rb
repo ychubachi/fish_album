@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128064501) do
+ActiveRecord::Schema.define(:version => 20111128165250) do
 
   create_table "families", :force => true do |t|
     t.string   "name_jp"
@@ -21,10 +21,8 @@ ActiveRecord::Schema.define(:version => 20111128064501) do
   end
 
   create_table "fish", :force => true do |t|
-    t.string   "family_jp"
     t.string   "name_jp"
     t.string   "nickname_jp"
-    t.string   "family_en"
     t.string   "name_en"
     t.string   "name_la"
     t.datetime "created_at"

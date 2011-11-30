@@ -9,7 +9,7 @@ class FishController < ApplicationController
       if admin?
         format.html # index.html.erb
       else
-        format.html { render layout: 'mobile' }
+        format.html { render layout: 'mobile', template: 'fish/index.mobile' }
       end
       format.json { render json: @fish }
     end

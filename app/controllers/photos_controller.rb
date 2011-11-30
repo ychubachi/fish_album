@@ -8,12 +8,10 @@ class PhotosController < ApplicationController
     @photos = Photo.where(fish_id: params[:fish_id])
 
     respond_to do |format|
-      format.html do
-        if admin?
-          render
-        else
-          render layout: 'mobile'
-        end
+      if admin?
+        format.html
+      else
+        format.html {render layout: 'mobile', template: 'photos/index.mobile' }
       end
       format.json { render json: @photos }
     end
@@ -27,12 +25,10 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
 
     respond_to do |format|
-      format.html do
-        if admin?
-          render # show.html.erb
-        else
-          render layout: 'mobile' # show.html.erb
-        end
+      if admin?
+        format.html
+      else
+        format.html {render layout: 'mobile', template: 'photos/show.mobile' }
       end
       format.json { render json: @photo }
     end

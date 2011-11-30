@@ -1,4 +1,6 @@
 class FamiliesController < ApplicationController
+  layout 'admin'
+
   # GET /families
   # GET /families.json
   def index
@@ -6,9 +8,9 @@ class FamiliesController < ApplicationController
 
     respond_to do |format|
       if admin?
-        format.html # index.html.erb
+        format.html
       else
-        format.html { render layout: 'mobile' }
+        format.html { render layout: 'mobile', template: 'families/index.mobile' }
       end
       format.json { render json: @families }
     end

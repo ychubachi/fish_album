@@ -6,6 +6,6 @@ class RemoveFamilyFromFish < ActiveRecord::Migration
 
   def down
     add_column :fish, :family_en, :string
-    add_column :fish, :family_jp, :string,
+    add_column :fish, :family_jp, :string
   end
 end
