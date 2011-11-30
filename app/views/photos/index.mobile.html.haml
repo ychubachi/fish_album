@@ -1,26 +1,5 @@
 %div{"data-role" => "header", 'data-position' => 'inline'}
-  %h1
-    Admin:
-    = @fish.name_jp
-    \/
-    = @fish.name_en
+  %h1= "#{@fish.name_jp}/#{@fish.name_en}"
 %div{"data-role" => "content"}
-  %table
-    %tr
-      %th
-      - if admin?
-        %th
-        %th
-        %th
-    - @photos.each do |photo|
-      %tr
-        %td= link_to image_tag(photo.file.thumb.url), [@family, @fish, photo]
-        - if admin?
-          %td= link_to 'Edit', edit_family_fish_photo_path(@family, @fish, photo), 'data-ajax' => 'false'
-          %td= link_to 'Destroy', family_fish_photo_path(@family, @fish, photo), confirm: 'Are you sure?', method: :delete
-
-  %br
-
-  - if admin?
-    |
-    = link_to 'New Photo', new_family_fish_photo_path(@family, @fish)
+  - @photos.each do |photo|
+    .mobile_center= link_to image_tag(photo.file.mobile.url), [@family, @fish, photo]

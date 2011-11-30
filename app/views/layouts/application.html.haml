@@ -1,16 +1,18 @@
 !!!
 %html
   %head
-    %title Fish Album
+    %title Fish Album-管理画面
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    管理者画面
+    = link_to 'トップ', controller: :admin, action: :index
     - if admin?
-      = link_to 'logout', controller: :admin, action: :logout
+      = link_to 'ログアウト', controller: :admin, action: :logout
     - else
-      = link_to 'login', controller: :admin, action: :login
+      = link_to 'ログイン', controller: :admin, action: :login
     %hr
     = yield
+    %hr
+    %p 2011 Copyright (C) by D.S.Murai and Y.Chubachi
 

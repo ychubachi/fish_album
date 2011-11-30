@@ -1,7 +1,6 @@
-%h1 Editing family
+%h1 編集（科）
 
 = render 'form'
 
-= link_to 'Show', @family
-\|
-= link_to 'Back', families_path
+%button= link_to '戻る', families_path
+%button= link_to '表示', @family

@@ -14,6 +14,5 @@
     %td= t 'activerecord.attributes.fish.name_la'
     %td= @fish.name_la
 
-= link_to 'Edit', edit_family_fish_path(@family, @fish)
-\|
-= link_to 'Back', family_fish_index_path(@family)
+%button= link_to '戻る', family_fish_index_path(@family)
+%button= link_to '編集', edit_family_fish_path(@family, @fish)

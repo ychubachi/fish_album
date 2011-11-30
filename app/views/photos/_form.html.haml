@@ -6,11 +6,13 @@
         - @photo.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label :file
     = image_tag(@photo.file_url) if @photo.file?
+  .field  
+    = f.label :file
     = f.file_field :file
+  .field  
     = f.label :url
     = f.text_field :remote_file_url
     = f.hidden_field :file_cache
   .actions
-    = f.submit 'Save'
+    = f.submit '保存'

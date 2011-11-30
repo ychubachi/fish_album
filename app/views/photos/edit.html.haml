@@ -1,9 +1,7 @@
-%h1 Editing photo
+%h1 編集（写真）
 
 = render 'form'
 
-= link_to 'Show', @photo
-\|
-= link_to 'Back', photos_path
-\|
-= link_to 'Destroy', @photo, :confirm => 'Are you sure?', :method => :delete
+%button= link_to '戻る', family_fish_photos_path(@family, @fish)
+%button= link_to '表示', [@family, @fish, @photo]
+%button= link_to '削除', [@family, @fish, @photo], :confirm => 'まじでまじすか？', :method => :delete

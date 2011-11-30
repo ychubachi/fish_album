@@ -1,7 +1,6 @@
-%h1 Editing fish
+%h1 編集（魚）
 
 = render 'form'
 
-= link_to 'Show', family_fish_path(@family, @fish)
-\|
-= link_to 'Back', family_fish_index_path(@family)
+%button= link_to '戻る', family_fish_index_path(@family)
+%button= link_to '表示', family_fish_path(@family, @fish)

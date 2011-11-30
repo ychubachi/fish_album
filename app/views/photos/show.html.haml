@@ -1,14 +1,10 @@
 %div{"data-role" => "header"}
-  %h1
-    Admin: 
-    = @fish.name_jp
-    \/
-    = @fish.name_en
+  %h1= "#{@fish.name_jp}/#{@fish.name_en}"
 %div{"data-role" => "content"}
   %p#notice= notice
 
   %p
     = image_tag(@photo.file_url, width: '100%') if @photo.file?
 
-  - if admin?
-    = link_to 'Edit', edit_family_fish_photo_path(@family, @fish, @photo)
+%button= link_to '戻る', family_fish_photos_path(@family,@fish)
+%button= link_to '編集', edit_family_fish_photo_path(@family, @fish, @photo)

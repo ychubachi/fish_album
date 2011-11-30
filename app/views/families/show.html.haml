@@ -1,12 +1,12 @@
 %p#notice= notice
 
-%p
-  %b Name jp:
-  = @family.name_jp
-%p
-  %b Name en:
-  = @family.name_en
+%table
+  %tr 
+    %td 和名:
+    %td= @family.name_jp
+  %tr
+    %td 英名:
+    %td= @family.name_en
 
-= link_to 'Edit', edit_family_path(@family)
-\|
-= link_to 'Back', families_path
+%button= link_to '戻る', families_path
+%button= link_to '編集', edit_family_path(@family)
