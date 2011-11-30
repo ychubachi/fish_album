@@ -1,14 +1,16 @@
-
-%ul{'data-role' => 'listview'}
-  - @families.each do |family|
-    %li
-      %a{href: family_fish_index_path(family)}
-        %p= family.name_jp
-        %p= family.name_en
-      - if admin?
-        %a= link_to 'Show', family
-        %a= link_to 'Edit', edit_family_path(family)
-        %a= link_to 'Destroy', family, :confirm => 'Are you sure?', :method => :delete
-- if admin?
-  %br
-  = link_to 'New Family', new_family_path
+%div{"data-role" => "header"}
+  %h1 Families
+%div{"data-role" => "content"}
+  %ul{'data-role' => 'listview'}
+    - @families.each do |family|
+      %li
+        %a{href: family_fish_index_path(family)}
+          %p= family.name_jp
+          %p= family.name_en
+        - if admin?
+          %a= link_to 'Show', family
+          %a= link_to 'Edit', edit_family_path(family)
+          %a= link_to 'Destroy', family, :confirm => 'Are you sure?', :method => :delete
+  - if admin?
+    %br
+    = link_to 'New Family', new_family_path

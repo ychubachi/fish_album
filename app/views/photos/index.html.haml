@@ -1,22 +1,25 @@
-%h1 Listing photos
-
-%table
-  %tr
-    %th
-    - if admin?
-      %th
-      %th
-      %th
-  - @photos.each do |photo|
+%div{"data-role" => "header", 'data-position' => 'inline'}
+  %h1
+    = @fish.name_jp
+    \/
+    = @fish.name_en
+%div{"data-role" => "content"}
+  %table
     %tr
-      %td= link_to image_tag(photo.file.thumb.url), [@family, @fish, photo]
+      %th
       - if admin?
-        %td= link_to 'Edit', edit_family_fish_photo_path(@family, @fish, photo), 'data-ajax' => 'false'
-        %td= link_to 'Destroy', family_fish_photo_path(@family, @fish, photo), confirm: 'Are you sure?', method: :delete
+        %th
+        %th
+        %th
+    - @photos.each do |photo|
+      %tr
+        %td= link_to image_tag(photo.file.thumb.url), [@family, @fish, photo]
+        - if admin?
+          %td= link_to 'Edit', edit_family_fish_photo_path(@family, @fish, photo), 'data-ajax' => 'false'
+          %td= link_to 'Destroy', family_fish_photo_path(@family, @fish, photo), confirm: 'Are you sure?', method: :delete
 
-%br
+  %br
 
-= link_to 'Back', family_fish_index_path(@family), 'data-rel' => 'back', 'data-role' => 'button', 'data-inline' => 'true'
-- if admin?
-  |
-  = link_to 'New Photo', new_family_fish_photo_path(@family, @fish)
+  - if admin?
+    |
+    = link_to 'New Photo', new_family_fish_photo_path(@family, @fish)

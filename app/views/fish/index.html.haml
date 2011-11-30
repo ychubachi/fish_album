@@ -1,20 +1,22 @@
-%p= @family.name_jp
-%p= @family.name_en
+%div{"data-role" => "header"}
+  %h1
+    = @family.name_jp
+    \/
+    = @family.name_en
+%div{"data-role" => "content"}
+  %ul{'data-role' => 'listview'}
+    - @fish.each do |fish|
+      %li
+        %a{ href: family_fish_photos_path(@family, fish) }
+          %p= fish.name_jp
+          %p= fish.name_en
+          %p= fish.name_la
+        - if admin?
+          %td= link_to 'Show', family_fish_path(@family, fish)
+          %td= link_to 'Edit', edit_family_fish_path(@family, fish)
+          %td= link_to 'Destroy', family_fish_path(@family, fish), :confirm => 'Are you sure?', :method => :delete
 
-%ul{'data-role' => 'listview'}
-  - @fish.each do |fish|
-    %li
-      %a{ href: family_fish_photos_path(@family, fish) }
-        %p= fish.name_jp
-        %p= fish.name_en
-        %p= fish.name_la
-      - if admin?
-        %td= link_to 'Show', family_fish_path(@family, fish)
-        %td= link_to 'Edit', edit_family_fish_path(@family, fish)
-        %td= link_to 'Destroy', family_fish_path(@family, fish), :confirm => 'Are you sure?', :method => :delete
-
-%br
-= link_to 'Back', families_path, 'data-rel' => 'back', 'data-role' => 'button', 'data-inline' => 'true'
-- if admin?
-  |
-  = link_to 'New Fish', new_family_fish_path
+  %br
+  - if admin?
+    |
+    = link_to 'New Fish', new_family_fish_path

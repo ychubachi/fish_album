@@ -1,0 +1,18 @@
+%div{"data-role" => "header"}
+  %h1 Settings
+%div{"data-role" => "content"}
+  = form_tag({action: 'settings'}, {method: 'post', 'data-ajax' => 'false'}) do |f|
+    %div{"data-role" => "fieldcontain"}
+      %fieldset{"data-role" => "controlgroup"}
+        %legend Choose a language:
+        %input#lang_jp{:name => "lang", :type => "radio", :value => "jp", :checked => "checked"}/
+        %label{:for => "lang_jp"} Japanese
+        %input#lang_en{:name => "lang", :type => "radio", :value => "en"}/
+        %label{:for => "lang_en"} English
+    %div{"data-role" => "fieldcontain"}
+      %label{:for => "admin"} Admin:
+      %select#admin{:name => "admin", "data-role" => "slider"}
+        %option{:value => "off"} Off
+        %option{:value => "on"} On
+    %button{"data-theme" => "a", 'data-rel' => 'back', :type => "submit"} Submit
+          
