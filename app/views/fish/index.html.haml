@@ -1,22 +1,22 @@
-%div{"data-role" => "header"}
+%header
   = link_to '科一覧', families_path
   %h1= "#{@family.name_jp}科の魚一覧"
-%div{"data-role" => "content"}
-  %table
+  %button= link_to '新規（魚）', new_family_fish_path
+%table
+  %tr
+    %th 和名
+    %th 英名
+    %th 学名
+    %th 一覧
+    %th 操作
+  - @fish.each do |fish|
     %tr
-      %th 和名
-      %th 英名
-      %th 学名
-      %th 操作
-    - @fish.each do |fish|
-      %tr
-        %td= fish.name_jp
-        %td= fish.name_en
-        %td= fish.name_la
-        %td
-          %button= link_to '表示', [@family, fish]
-          %button= link_to '編集', edit_family_fish_path(@family, fish)
-          %button= link_to '削除', [@family, fish], :confirm => 'まじですか？', :method => :delete
-          %button= link_to '一覧', family_fish_photos_path(@family, fish)
-
-%button= link_to '新規（魚）', new_family_fish_path
+      %td= fish.name_jp
+      %td= fish.name_en
+      %td= fish.name_la
+      %td
+        %button= link_to '一覧', family_fish_photos_path(@family, fish)
+      %td
+        %button= link_to '表示', [@family, fish]
+        %button= link_to '編集', edit_family_fish_path(@family, fish)
+        %button= link_to '削除', [@family, fish], :confirm => 'まじです？', :method => :delete

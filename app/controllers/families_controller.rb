@@ -1,6 +1,4 @@
 class FamiliesController < ApplicationController
-  layout 'admin'
-
   # GET /families
   # GET /families.json
   def index
