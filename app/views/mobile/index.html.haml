@@ -5,6 +5,5 @@
     %label{:for => "search"} Search:
     %input#search{:name => "password", :type => "search", :value => ""}
   = link_to 'Families', families_path, 'data-role' => 'button'
-  = link_to 'Search', families_path, 'data-role' => 'button'
-  = link_to 'Settings', mobile_settings_path, 'data-role' => 'button'
+  = link_to 'Settings', settings_path, 'data-role' => 'button', 'data-ajax' => 'false'
           
