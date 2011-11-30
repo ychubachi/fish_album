@@ -2,7 +2,7 @@
   = link_to '科一覧', families_path
   >>
   = link_to '魚一覧', family_fish_index_path(@family)
-  %h1= "#{@fish.name_jp}の写真一覧ほげ"
+  %h1= "#{@fish.name_jp}の写真一覧"
   %button= link_to '新規（写真）', new_family_fish_photo_path(@family, @fish)
 %table
   %tr
