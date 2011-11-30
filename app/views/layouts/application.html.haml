@@ -6,9 +6,11 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    管理者画面
     - if admin?
       = link_to 'logout', controller: :admin, action: :logout
     - else
       = link_to 'login', controller: :admin, action: :login
+    %hr
     = yield
 

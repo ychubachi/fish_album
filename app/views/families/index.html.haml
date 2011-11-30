@@ -5,17 +5,14 @@
     %tr
       %th 和名
       %th 英名
-      %th
-      %th      
-      %th
-      %th      
+      %th 操作
     - @families.each do |family|
       %tr
         %td= family.name_jp
         %td= family.name_en
-        %td= link_to '表示', family
-        %td= link_to '編集', edit_family_path(family)
-        %td= link_to '削除', family, :confirm => 'まじですか？', :method => :delete
-        %td= link_to '一覧', family_fish_index_path(family)
-  %br
-  = link_to '新規（科）', new_family_path
+        %td
+          %button= link_to '表示', family
+          %button= link_to '編集', edit_family_path(family)
+          %button= link_to '削除', family, :confirm => 'まじですか？', :method => :delete
+          %button= link_to '一覧', family_fish_index_path(family)
+  %button= link_to '新規（科）', new_family_path

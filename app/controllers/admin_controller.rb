@@ -1,6 +1,5 @@
 class AdminController < ApplicationController
   def index
-    render layout: 'admin'
   end
   
   def login
@@ -10,6 +9,6 @@ class AdminController < ApplicationController
 
   def logout
     session[:admin] = nil
-    redirect_to action: 'index'
+    redirect_to '/'
   end
 end
