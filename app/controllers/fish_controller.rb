@@ -40,6 +40,7 @@ class FishController < ApplicationController
       @family = nil
     end
     @fish = Fish.new
+    @fish.family = @family
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,17 +61,11 @@ class FishController < ApplicationController
   # POST /fish
   # POST /fish.json
   def create
-    if params[:family_id]
-      @family = Family.find(params[:family_id])
-    else
-      @family = nil
-    end
     @fish = Fish.new(params[:fish])
-    @fish.family = @family
 
     respond_to do |format|
       if @fish.save
-        format.html { redirect_to family_fish_index_path(@family), notice: 'Fish was successfully created.' }
+        format.html { redirect_to fish_path(@fish), notice: 'Fish was successfully created.' }
         format.json { render json: @fish, status: :created, location: @fish }
       else
         format.html { render action: "new" }
@@ -91,7 +86,7 @@ class FishController < ApplicationController
 
     respond_to do |format|
       if @fish.update_attributes(params[:fish])
-        format.html { redirect_to family_fish_index_path(@family), notice: 'Fish was successfully updated.' }
+        format.html { redirect_to fish_path(@fish), notice: 'Fish was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -104,10 +99,21 @@ class FishController < ApplicationController
   # DELETE /fish/1.json
   def destroy
     @fish = Fish.find(params[:id])
+
+    if @fish.family
+      @family = @fish.family
+    else
+      @family = nil
+    end
+
     @fish.destroy
 
     respond_to do |format|
-      format.html { redirect_to fish_index_path }
+      if @family
+        format.html { redirect_to family_fish_index_path(@family) }
+      else
+        format.html { redirect_to fish_index_path }
+      end
       format.json { head :ok }
     end
   end

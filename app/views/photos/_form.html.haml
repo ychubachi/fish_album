@@ -1,18 +1,22 @@
-= form_for [@family, @fish, @photo] do |f|
+= form_for(@photo) do |f|
   -if @photo.errors.any?
     #error_explanation
       %h2= "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:"
       %ul
         - @photo.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = image_tag(@photo.file_url) if @photo.file?
-  .field  
-    = f.label :file
-    = f.file_field :file
-  .field  
-    = f.label :url
-    = f.text_field :remote_file_url
-    = f.hidden_field :file_cache
-  .actions
-    = f.submit '保存'
+
+  = image_tag(@photo.file.mobile.url) if @photo.file?
+  %p ※URLまたはファイルのどちらかを入力してください
+  %table
+    %tr
+      %td= f.label '魚'
+      %td= collection_select(:photo, :fish_id, Fish.all, :id, :name_jp)
+    %tr
+      %td= f.label 'URL'
+      %td= f.text_field :remote_file_url
+    %tr
+      %td= f.label 'ファイル'
+      %td= f.file_field :file
+  = f.hidden_field :file_cache
+  = f.submit '保存'

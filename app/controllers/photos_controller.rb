@@ -44,9 +44,13 @@ class PhotosController < ApplicationController
   # GET /photos/new
   # GET /photos/new.json
   def new
-    @family = Family.find(params[:family_id])
-    @fish = Fish.find(params[:fish_id])
+    if params[:fish_id]
+      @fish = Fish.find(params[:fish_id])
+    else
+      @fish = nil
+    end
     @photo = Photo.new
+    @photo.fish = @fish
 
     respond_to do |format|
       format.html # new.html.erb
@@ -67,17 +71,11 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    if params[:fish_id]
-      @fish = Fish.find(params[:fish_id])
-    else
-      @fish = nil
-    end
     @photo = Photo.new(params[:photo])
-    @photo.fish = @fish
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to fish_photos_path(@fish), notice: 'Photo was successfully created.' }
+        format.html { redirect_to photo_path(@photo), notice: 'Photo was successfully created.' }
         format.json { render json: @photo, status: :created, location: @photo }
       else
         format.html { render action: "new" }
@@ -89,21 +87,12 @@ class PhotosController < ApplicationController
   # PUT /photos/1
   # PUT /photos/1.json
   def update
-    if params[:fish_id]
-      @fish = Fish.find(params[:fish_id])
-    else
-      @fish = nil
-    end
     @photo = Photo.find(params[:id])
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
         @photo.file.recreate_versions!
-        if @fish
-          format.html { redirect_to fish_photos_path(@fish), notice: 'Photo was successfully updated.' }
-        else
-          format.html { redirect_to photos_path, notice: 'Photo was successfully updated.' }
-        end
+        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -115,12 +104,13 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
-    if params[:fish_id]
-      @fish = Fish.find(params[:fish_id])
+    @photo = Photo.find(params[:id])
+
+    if @photo.fish
+      @fish = @photo.fish
     else
       @fish = nil
     end
-    @photo = Photo.find(params[:id])
 
     @photo.remove_file!
     @photo.destroy

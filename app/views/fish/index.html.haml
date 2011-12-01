@@ -5,9 +5,13 @@
       = "#{@family.name_jp}科の魚一覧"
     - else
       魚一覧
-  %button= link_to '新規（魚）', new_fish_path
+  - if @family
+    %button= link_to "新規（#{@family.name_jp}）", new_family_fish_path(@family)
+  - else
+    %button= link_to '新規（魚）', new_fish_path
 %table
   %tr
+    %th 科
     %th 和名
     %th 英名
     %th 学名
@@ -15,11 +19,12 @@
     %th 操作
   - @fish.each do |fish|
     %tr
+      %td= fish.family.name_jp if fish.family
       %td= fish.name_jp
       %td= fish.name_en
       %td= fish.name_la
       %td
-        %button= link_to '一覧', fish_photos_path(fish)
+        %button= link_to '写真', fish_photos_path(fish)
       %td
         %button= link_to '表示', fish
         %button= link_to '編集', edit_fish_path(fish)
