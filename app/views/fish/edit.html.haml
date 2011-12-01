@@ -2,5 +2,7 @@
 
 = render 'form'
 
-%button= link_to '戻る', family_fish_index_path(@family)
-%button= link_to '表示', family_fish_path(@family, @fish)
+%hr
+%button= link_to '魚一覧', fish_index_path
+%button= link_to '同じ科の魚一覧', family_fish_index_path(@fish.family)
+%button= link_to '表示', fish_path(@fish)

@@ -7,19 +7,21 @@
     = link_to '>>魚一覧', fish_index_path
   - if @fish
     %h1= "#{@fish.name_jp}の写真一覧"
-    %button= link_to '新規（写真）', new_fish_photo_path(@fish)
+    %button= link_to "新規（#{@fish.name_jp}）", new_fish_photo_path(@fish)
   - else
     %h1 写真一覧
     %button= link_to '新規（写真）', new_photo_path
 %table
   %tr
     %th ID
+    %th 科
     %th 魚
     %th 写真
     %th 操作
   - @photos.each do |photo|
     %tr
       %td= photo.id
+      %td= photo.fish.family.name_jp if photo.fish and photo.fish.family
       %td= photo.fish.name_jp if photo.fish
       %td= image_tag(photo.file.thumb.url)
       %td

@@ -1,5 +1,7 @@
-%h1 New photo
+%h1 新規（写真）
 
 = render 'form'
 
-= link_to 'Back', family_fish_photos_path(@family, @fish)
+- if @photo.fish
+  %button= link_to '同じ魚の写真一覧', fish_photos_path(@photo.fish)
+%button= link_to '写真一覧', photos_path

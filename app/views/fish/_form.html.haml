@@ -1,4 +1,4 @@
-= form_for([@family, @fish]) do |f|
+= form_for(@fish) do |f|
   -if @fish.errors.any?
     #error_explanation
       %h2= "#{pluralize(@fish.errors.count, "error")} prohibited this fish from being saved:"
@@ -6,17 +6,22 @@
         - @fish.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name_jp
-    = f.text_field :name_jp
-  .field
-    = f.label :nickname_jp
-    = f.text_field :nickname_jp
-  .field
-    = f.label :name_en
-    = f.text_field :name_en
-  .field
-    = f.label :name_la
-    = f.text_field :name_la
+
+  %table        
+    %tr
+      %td= f.label '科'
+      %td= collection_select(:fish, :family_id, Family.all, :id, :name_jp)
+    %tr
+      %td= f.label :name_jp
+      %td= f.text_field :name_jp
+    %tr
+      %td= f.label :nickname_jp
+      %td= f.text_field :nickname_jp
+    %tr
+      %td= f.label :name_en
+      %td= f.text_field :name_en
+    %tr
+      %td= f.label :name_la
+      %td= f.text_field :name_la
   .actions
     = f.submit '保存'
