@@ -98,6 +98,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
+        @photo.file.recreate_versions!
         if @fish
           format.html { redirect_to fish_photos_path(@fish), notice: 'Photo was successfully updated.' }
         else

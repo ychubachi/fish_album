@@ -1,9 +1,8 @@
 %div{"data-role" => "header"}
-  %h1
-    - if @fish
-      = "#{@fish.name_jp}/#{@fish.name_en}"
-    - else
-      Photo
+  - if @photo.fish
+    %h1= "#{@photo.fish.name_jp}/#{@photo.fish.name_en}"
+  - else
+    %h1 Photo
 %div{"data-role" => "content"}
   %p#notice= notice
   = image_tag @photo.file.url, width: '100%'
