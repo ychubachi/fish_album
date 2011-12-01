@@ -13,5 +13,12 @@ FishAlbum::Application.routes.draw do
       resources :photos
     end
   end
+
+  resources :fish do
+    resources :photos
+  end
+
+  resources :photos
+
   root to: "mobile#index"
 end

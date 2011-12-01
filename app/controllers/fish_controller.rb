@@ -2,8 +2,13 @@ class FishController < ApplicationController
   # GET /fish
   # GET /fish.json
   def index
-    @family = Family.find(params[:family_id])
-    @fish = Fish.where(family_id: params[:family_id])
+    if params[:family_id]
+      @family = Family.find(params[:family_id])
+      @fish = Fish.where(family_id: params[:family_id])
+    else
+      @family = nil
+      @fish = Fish.all
+    end
 
     respond_to do |format|
       if admin?
@@ -18,7 +23,6 @@ class FishController < ApplicationController
   # GET /fish/1
   # GET /fish/1.json
   def show
-    @family = Family.find(params[:family_id])
     @fish = Fish.find(params[:id])
 
     respond_to do |format|
@@ -30,7 +34,11 @@ class FishController < ApplicationController
   # GET /fish/new
   # GET /fish/new.json
   def new
-    @family = Family.find(params[:family_id])
+    if params[:family_id]
+      @family = Family.find(params[:family_id])
+    else
+      @family = nil
+    end
     @fish = Fish.new
 
     respond_to do |format|
@@ -41,14 +49,22 @@ class FishController < ApplicationController
 
   # GET /fish/1/edit
   def edit
-    @family = Family.find(params[:family_id])
+    if params[:family_id]
+      @family = Family.find(params[:family_id])
+    else
+      @family = nil
+    end
     @fish = Fish.find(params[:id])
   end
 
   # POST /fish
   # POST /fish.json
   def create
-    @family = Family.find(params[:family_id])
+    if params[:family_id]
+      @family = Family.find(params[:family_id])
+    else
+      @family = nil
+    end
     @fish = Fish.new(params[:fish])
     @fish.family = @family
 
@@ -66,7 +82,11 @@ class FishController < ApplicationController
   # PUT /fish/1
   # PUT /fish/1.json
   def update
-    @family = Family.find(params[:family_id])
+    if params[:family_id]
+      @family = Family.find(params[:family_id])
+    else
+      @family = nil
+    end
     @fish = Fish.find(params[:id])
 
     respond_to do |format|
@@ -83,12 +103,11 @@ class FishController < ApplicationController
   # DELETE /fish/1
   # DELETE /fish/1.json
   def destroy
-    @family = Family.find(params[:family_id])
     @fish = Fish.find(params[:id])
     @fish.destroy
 
     respond_to do |format|
-      format.html { redirect_to family_fish_index_path(@family) }
+      format.html { redirect_to fish_index_path }
       format.json { head :ok }
     end
   end

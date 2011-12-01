@@ -1,7 +1,15 @@
-%h1 編集（写真）
+- if @photo.fish
+  %h1 #{@photo.fish.name_jp}/#{@photo.fish.name_en}
+- else
+  %h1 編集（写真）
 
 = render 'form'
 
-%button= link_to '戻る', family_fish_photos_path(@family, @fish)
-%button= link_to '表示', [@family, @fish, @photo]
-%button= link_to '削除', [@family, @fish, @photo], :confirm => 'まじでまじすか？', :method => :delete
+- if @fish
+  %button= link_to '戻る', fish_photos_path(@fish)
+  %button= link_to '表示', [@fish, @photo]
+  %button= link_to '削除', [@fish, @photo], :confirm => 'まじでまじすか？', :method => :delete
+- else
+  %button= link_to '戻る', photos_path
+  %button= link_to '表示', @photo
+  %button= link_to '削除', @photo, :confirm => 'まじでまじすか？', :method => :delete
