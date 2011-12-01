@@ -8,6 +8,8 @@ class SearchesController < ApplicationController
   end
 
   def create
+    puts params.to_yaml
+    
     if admin?
       render
     else
