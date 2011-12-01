@@ -1,6 +1,4 @@
 FishAlbum::Application.routes.draw do
-  resource :settings
-
   get  'mobile/index'
   get  'mobile/settings'
   post 'mobile/settings'
@@ -19,6 +17,9 @@ FishAlbum::Application.routes.draw do
   end
 
   resources :photos
+
+  resource :settings
+  resource :searches
 
   root to: "mobile#index"
 end

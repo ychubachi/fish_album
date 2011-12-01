@@ -9,7 +9,7 @@
     %p= notice    
     = link_to 'トップ', controller: :admin, action: :index
     - if admin?
-      = link_to 'ログアウト', controller: :admin, action: :logout
+      = link_to 'モバイル', controller: :admin, action: :logout
     - else
       = link_to 'ログイン', controller: :admin, action: :login
     %hr
