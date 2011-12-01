@@ -7,6 +7,9 @@
   %tr
     %td 英名:
     %td= @family.name_en
+  %tr
+    %td 学名:
+    %td= @family.name_la
 
 %button= link_to '戻る', families_path
 %button= link_to '編集', edit_family_path(@family)
