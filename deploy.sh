@@ -11,7 +11,7 @@ git checkout work
 # Deploy
 cd /home/rails/fish_album
 git pull
-rake db:migration
+rake db:migrate
 rake assets:precompile
 touch tmp/restart.txt
 # Done
