@@ -6,4 +6,7 @@
       %li
         %a{href: family_fish_index_path(family)}
           %p= family.name_jp
-          %p= family.name_en
+          - if ! family.name_la.blank?
+            %p= "#{family.name_en}/#{family.name_la}"
+          - else
+            %p= family.name_en

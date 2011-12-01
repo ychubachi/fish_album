@@ -5,12 +5,14 @@
   %tr
     %th 和名
     %th 英名
+    %th 学名
     %th 一覧
     %th 操作
   - @families.each do |family|
     %tr
       %td= family.name_jp
       %td= family.name_en
+      %td= family.name_la
       %td
         %button= link_to '一覧', family_fish_index_path(family)
       %td
