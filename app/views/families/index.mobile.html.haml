@@ -1,12 +1,12 @@
-%div{"data-role" => "header"}
-  %h1 Families
-%div{"data-role" => "content"}
-  %ul{'data-role' => 'listview'}
-    - @families.each do |family|
-      %li
-        %a{href: family_fish_index_path(family)}
-          %p= family.name_jp
-          - if ! family.name_la.blank?
-            %p= "#{family.name_en}/#{family.name_la}"
-          - else
-            %p= family.name_en
+= content_for :header do
+  %h1 Fish Album
+
+%ul{'data-role' => 'listview'}
+  - @families.each do |family|
+    %li
+      = link_to family_fish_index_path(family) do
+        %p= family.name_jp
+        - if ! family.name_la.blank?
+          %p= "#{family.name_en}/#{family.name_la}"
+        - else
+          %p= family.name_en

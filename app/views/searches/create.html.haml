@@ -1,1 +1,23 @@
-%p CREATE
+%header
+  %h1= "検索結果：#{@keyword}"
+  
+%table
+  %tr
+    %th 科
+    %th 和名
+    %th 英名
+    %th 学名
+    %th 一覧
+    %th 操作
+  - @fish.each do |fish|
+    %tr
+      %td= fish.family.name_jp if fish.family
+      %td= fish.name_jp
+      %td= fish.name_en
+      %td= fish.name_la
+      %td
+        %button= link_to '写真', fish_photos_path(fish)
+      %td
+        %button= link_to '表示', fish
+        %button= link_to '編集', edit_fish_path(fish)
+        %button= link_to '削除', fish, :confirm => 'まじです？', :method => :delete

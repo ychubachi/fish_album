@@ -1,14 +1,14 @@
-%div{"data-role" => "header"}
+= content_for :header do
   %h1
     - if @family
       = "#{@family.name_jp}/#{@family.name_en}"
     - else
       = Fish
-%div{"data-role" => "content"}
-  %ul{'data-role' => 'listview'}
-    - @fish.each do |fish|
-      %li
-        %a{ href: fish_photos_path(fish) }
-          %p= fish.name_jp
-          %p= fish.name_en
-          %p= fish.name_la
+
+%ul{'data-role' => 'listview'}
+  - @fish.each do |fish|
+    %li
+      %a{ href: fish_photos_path(fish) }
+        %p= fish.name_jp
+        %p= fish.name_en
+        %p= fish.name_la

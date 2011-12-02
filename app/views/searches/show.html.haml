@@ -1,3 +1,3 @@
 = form_tag do
-  %label{:for => "search"} Search:
-  %input#search{:name => "password", :type => "search", :value => ""}
+  = label_tag :keyword
+  = text_field_tag :keyword, nil, type: 'search'

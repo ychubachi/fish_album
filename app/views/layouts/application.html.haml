@@ -7,11 +7,15 @@
     = csrf_meta_tags
   %body
     %p= notice    
-    = link_to 'トップ', controller: :admin, action: :index
-    - if admin?
-      = link_to 'モバイル', controller: :admin, action: :logout
-    - else
-      = link_to 'ログイン', controller: :admin, action: :login
+    .navbar
+      - if admin?
+        %button= link_to 'ログアウト', admin_logout_path
+        %button= link_to '科一覧', families_path
+        %button= link_to '魚一覧', fish_index_path
+        %button= link_to '写真一覧', photos_path
+        %button= link_to '検索', search_path
+      - else
+        %button= link_to 'ログイン', admin_login_path
     %hr
     = yield
     %hr

@@ -17,9 +17,9 @@ FishAlbum::Application.routes.draw do
   end
 
   resources :photos
+  resource :search
 
-  resource :settings
-  resource :searches
+  resource :setting
 
-  root to: "mobile#index"
+  root to: "families#index"
 end
