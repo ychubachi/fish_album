@@ -1,9 +1,9 @@
-%div{"data-role" => "header", 'data-position' => 'inline'}
+= content_for :header do
   %h1
     - if @fish
       = "#{@fish.name_jp}/#{@fish.name_en}"
     - else
       Photos
-%div{"data-role" => "content"}
-  - @photos.each do |photo|
-    .mobile_center= link_to image_tag(photo.file.mobile.url), photo
+
+- @photos.each do |photo|
+  .mobile_center= link_to image_tag(photo.file.mobile.url), photo

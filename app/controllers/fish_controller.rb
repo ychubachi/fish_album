@@ -4,10 +4,10 @@ class FishController < ApplicationController
   def index
     if params[:family_id]
       @family = Family.find(params[:family_id])
-      @fish = Fish.where(family_id: params[:family_id])
+      @fish = Fish.joins(:family).where(family_id: params[:family_id]).order('families.name_jp, name_jp')
     else
       @family = nil
-      @fish = Fish.all
+      @fish = Fish.joins(:family).order('families.name_jp, name_jp')
     end
 
     respond_to do |format|

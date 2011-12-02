@@ -1,0 +1,5 @@
+= content_for :header do
+  %h1 Search
+
+= form_tag do
+  %input#search{:name => "keyword", :type => "search", :value => ""}

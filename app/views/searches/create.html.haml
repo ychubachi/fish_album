@@ -1,13 +1,6 @@
 %header
-  %h1
-    - if @family
-      = "#{@family.name_jp}科の魚一覧"
-    - else
-      魚一覧
-  - if @family
-    %button= link_to "新規（#{@family.name_jp}）", new_family_fish_path(@family)
-  - else
-    %button= link_to '新規（魚）', new_fish_path
+  %h1= "検索結果：#{@keyword}"
+  
 %table
   %tr
     %th 科

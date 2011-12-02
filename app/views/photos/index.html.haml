@@ -1,16 +1,11 @@
 %header
-  - if @family
-    = link_to '科一覧', families_path
-    = link_to '>>魚一覧', family_fish_index_path(@family)
-  - else  
-    = link_to '科一覧', families_path
-    = link_to '>>魚一覧', fish_index_path
   - if @fish
     %h1= "#{@fish.name_jp}の写真一覧"
     %button= link_to "新規（#{@fish.name_jp}）", new_fish_photo_path(@fish)
   - else
     %h1 写真一覧
     %button= link_to '新規（写真）', new_photo_path
+
 %table
   %tr
     %th ID

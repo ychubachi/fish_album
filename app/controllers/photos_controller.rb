@@ -5,10 +5,10 @@ class PhotosController < ApplicationController
   def index
     if params[:fish_id]
       @fish = Fish.find(params[:fish_id])
-      @photos = Photo.where(fish_id: params[:fish_id])
+      @photos = Photo.joins(:fish => :family ).where(fish_id: params[:fish_id]).order('families.name_jp, fish.name_jp')
     else
       @fish = nil
-      @photos = Photo.all
+      @photos = Photo.joins(:fish => :family).order('families.name_jp, fish.name_jp')
     end
 
     respond_to do |format|
@@ -35,7 +35,7 @@ class PhotosController < ApplicationController
       if admin?
         format.html
       else
-        format.html {render layout: 'mobile', template: 'photos/show.mobile' }
+        format.html {render layout: 'mobile.fullscreen', template: 'photos/show.mobile' }
       end
       format.json { render json: @photo }
     end
