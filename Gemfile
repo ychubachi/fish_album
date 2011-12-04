@@ -41,4 +41,5 @@ gem 'mini_magick'
 
 group :development do
   gem 'i18n_generators'
+  gem 'capistrano'
 end
