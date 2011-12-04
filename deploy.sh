@@ -9,10 +9,10 @@ git merge work
 git push
 git checkout work
 # Deploy
-cd /home/rails/fish_album
-git pull
-rake db:migrate
-rake assets:precompile
-touch tmp/restart.txt
-# Done
-cd /home/yc/work/fish_album
+# cd /home/rails/fish_album
+# git pull
+# rake db:migrate
+# rake assets:precompile
+# touch tmp/restart.txt
+# cd /home/yc/work/fish_album
+cap deploy:all
