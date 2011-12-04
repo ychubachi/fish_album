@@ -6,7 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %p= notice    
+    %p#notice= notice
     .navbar
       - if admin?
         %button= link_to 'ログアウト', admin_logout_path
