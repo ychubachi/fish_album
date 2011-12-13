@@ -5,5 +5,11 @@
     - else
       Photos
 
-- @photos.each do |photo|
-  .mobile_center= link_to image_tag(photo.file.mobile.url), photo
+/- @photos.each do |photo|
+/  .mobile_center= link_to image_tag(photo.file.mobile.url), photo
+
+.ui-grid-a
+  - @photos.each do |photo|
+    %div{'class' => cycle('ui-block-a', 'ui-block-b')}
+      = link_to image_tag(photo.file.mobile.url), photo
+

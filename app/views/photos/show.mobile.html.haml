@@ -3,5 +3,4 @@
     %h1= "#{@photo.fish.name_jp}/#{@photo.fish.name_en}"
   - else
     %h1 Photo
-
-= image_tag @photo.file.url
+= image_tag @photo.file.mobile.url, 'class' => 'mobile_center'
