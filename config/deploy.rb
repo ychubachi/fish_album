@@ -20,7 +20,6 @@ namespace :deploy do
 end
 
 namespace :deploy do
-
   desc <<-DESC
     Creates synlinks for this application.
   DESC
