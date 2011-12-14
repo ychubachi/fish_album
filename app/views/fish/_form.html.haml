@@ -25,12 +25,13 @@
     %tr
       %td= f.label :name_la
       %td= f.text_field :name_la
-  %p サムネイル画像
-  %table
-    - Photo.where("fish_id = #{@fish.id}").each do |photo|
-      %tr
-        %td= f.radio_button(:thumb_photo_id, photo.id)
-        %td= image_tag(photo.file.thumb.url)
+  - if @fish.id    
+    %p サムネイル画像
+    %table
+      - Photo.where("fish_id = #{@fish.id}").each do |photo|
+        %tr
+          %td= f.radio_button(:thumb_photo_id, photo.id)
+          %td= image_tag(photo.file.thumb.url)
   .actions
     = f.submit '保存'
   
