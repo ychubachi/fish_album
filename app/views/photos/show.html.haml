@@ -4,8 +4,7 @@
   - else
     %h1 Photo
 %div{"data-role" => "content"}
-  %p
-    = image_tag(@photo.file_url, width: '100%') if @photo.file?
+  = image_tag(@photo.file_url) if @photo.file?
 
 %hr  
 - if @photo.fish

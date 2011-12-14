@@ -26,7 +26,7 @@
       %td= f.label :name_la
       %td= f.text_field :name_la
   - if @fish.id    
-    %p サムネイル画像
+    %p 代表的な写真
     %table
       - Photo.where("fish_id = #{@fish.id}").each do |photo|
         %tr

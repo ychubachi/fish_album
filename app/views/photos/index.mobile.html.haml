@@ -5,8 +5,11 @@
     - else
       Photos
 %p= @fish.description_jp if @fish
-.ui-grid-a
-  - @photos.each do |photo|
-    %div{'class' => cycle('ui-block-a', 'ui-block-b')}
-      = link_to image_tag(photo.file.mobile.url), photo
+/.ui-grid-a
+/  - @photos.each do |photo|
+/    %div{'class' => cycle('ui-block-a', 'ui-block-b')}
+/      = link_to image_tag(photo.file.mobile.url), photo
 
+%center
+  - @photos.each do |photo|
+    = link_to image_tag(photo.file.mobile.url), photo

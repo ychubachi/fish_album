@@ -16,8 +16,12 @@
         %button= link_to '検索', search_path
       - else
         %button= link_to 'ログイン', admin_login_path
+      %button= link_to 'Issues', 'https://github.com/ychubachi/fish_album/issues/new', target: '_blank'
+      %button= link_to 'Picasa', 'https://picasaweb.google.com/101680618216862629937', target: '_blank'
     %hr
     = yield
     %hr
     %p 2011 Copyright (C) by D.S.Murai and Y.Chubachi
+    参考
+    = link_to 'Web魚図鑑', 'http://fishing-forum.org/zukan/index.htm', target: '_blank'
 

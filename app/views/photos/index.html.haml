@@ -12,6 +12,7 @@
     %th 科
     %th 魚
     %th 写真
+    %th サイズ
     %th 操作
   - @photos.each do |photo|
     %tr
@@ -19,6 +20,7 @@
       %td= photo.fish.family.name_jp if photo.fish and photo.fish.family
       %td= photo.fish.name_jp if photo.fish
       %td= image_tag(photo.file.thumb.url)
+      %td= photo.file.get_geometry
       %td
         - if @fish
           %button= link_to '表示', [@fish, photo]

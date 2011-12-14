@@ -2,7 +2,8 @@
 # See https://github.com/jnicklas/carrierwave#readme
 
 class PhotoUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
   storage :file
 
   def store_dir
@@ -22,5 +23,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   def filename
     "fish_photo.jpg" if original_filename
+  end
+
+  def get_geometry
+    if (@file)
+      img = ::Magick::Image::read(@file.file).first
+      @geometry = [ img.columns, img.rows ]
+    end
   end
 end

@@ -13,8 +13,8 @@
     %th 科
     %th 和名
     %th 代表写真
-    %th 一覧
     %th 操作
+    %th 一覧
   - @fish.each do |fish|
     %tr
       %td= fish.family.name_jp if fish.family
@@ -24,8 +24,8 @@
       - else
         %td no photo
       %td
-        %button= link_to '写真', fish_photos_path(fish)
-      %td
         %button= link_to '表示', fish
         %button= link_to '編集', edit_fish_path(fish)
         %button= link_to '削除', fish, :confirm => 'まじです？', :method => :delete
+      %td
+        %button= link_to '写真', fish_photos_path(fish)
