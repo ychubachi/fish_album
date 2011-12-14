@@ -6,6 +6,7 @@ class Fish < ActiveRecord::Base
 
   belongs_to :family
   has_many :photo
+  belongs_to :thumb_photo, class_name: 'Photo'
 
   before_validation do |fish|
     fish.name_jp = nkf('-w --katakana', fish.name_jp) if fish.name_jp

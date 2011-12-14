@@ -11,6 +11,7 @@ ja:
       fish:
         name_jp: 和名  #g
         nickname_jp: 通称  #g
+        description_jp: 説明  #g
         family_en: 科（英語）  #g
         name_en: 英名  #g
         name_la: 学名  #g

@@ -1,19 +1,21 @@
+-if @fish.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@fish.errors.count, "error")} prohibited this fish from being saved:"
+    %ul
+      - @fish.errors.full_messages.each do |msg|
+        %li= msg
+
 = form_for(@fish) do |f|
-  -if @fish.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@fish.errors.count, "error")} prohibited this fish from being saved:"
-      %ul
-        - @fish.errors.full_messages.each do |msg|
-          %li= msg
-
-
   %table        
     %tr
       %td= f.label '科'
-      %td= collection_select(:fish, :family_id, Family.all, :id, :name_jp)
+      %td= f.collection_select(:family_id, Family.all, :id, :name_jp)
     %tr
       %td= f.label :name_jp
       %td= f.text_field :name_jp
+    %tr
+      %td= f.label :description_jp
+      %td= f.text_area :description_jp
     %tr
       %td= f.label :nickname_jp
       %td= f.text_field :nickname_jp
@@ -23,5 +25,12 @@
     %tr
       %td= f.label :name_la
       %td= f.text_field :name_la
+  %p サムネイル画像
+  %table
+    - Photo.where("fish_id = #{@fish.id}").each do |photo|
+      %tr
+        %td= f.radio_button(:thumb_photo_id, photo.id)
+        %td= image_tag(photo.file.thumb.url)
   .actions
     = f.submit '保存'
+  

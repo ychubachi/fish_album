@@ -1,3 +1,6 @@
+- if @fish.thumb_photo
+  = image_tag @fish.thumb_photo.file.mobile.url
+
 %table
   %tr
     %td= t '科'
@@ -8,6 +11,9 @@
   %tr
     %td= t 'activerecord.attributes.fish.nickname_jp'
     %td= @fish.nickname_jp
+  %tr
+    %td= t 'activerecord.attributes.fish.description_jp'
+    %td= @fish.description_jp
   %tr
     %td= t 'activerecord.attributes.fish.name_en'
     %td= @fish.name_en

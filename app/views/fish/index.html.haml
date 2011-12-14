@@ -12,16 +12,17 @@
   %tr
     %th 科
     %th 和名
-    %th 英名
-    %th 学名
+    %th 代表写真
     %th 一覧
     %th 操作
   - @fish.each do |fish|
     %tr
       %td= fish.family.name_jp if fish.family
       %td= fish.name_jp
-      %td= fish.name_en
-      %td= fish.name_la
+      - if fish.thumb_photo
+        %td= image_tag fish.thumb_photo.file.thumb.url
+      - else
+        %td no photo
       %td
         %button= link_to '写真', fish_photos_path(fish)
       %td
