@@ -4,10 +4,7 @@
       = "#{@fish.name_jp}/#{@fish.name_en}"
     - else
       Photos
-
-/- @photos.each do |photo|
-/  .mobile_center= link_to image_tag(photo.file.mobile.url), photo
-
+%p= @fish.description_jp if @fish
 .ui-grid-a
   - @photos.each do |photo|
     %div{'class' => cycle('ui-block-a', 'ui-block-b')}

@@ -9,6 +9,8 @@
   - @fish.each do |fish|
     %li
       %a{ href: fish_photos_path(fish) }
-        %p= fish.name_jp
-        %p= fish.name_en
-        %p= fish.name_la
+        = image_tag fish.thumb_photo.file.mobile.url if fish.thumb_photo
+        %h3= fish.name_jp
+        %p<
+          = fish.name_en if fish.name_en
+          = "/#{fish.name_la}" if ! fish.name_la.blank?

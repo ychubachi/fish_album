@@ -5,8 +5,7 @@
   - @families.each do |family|
     %li
       = link_to family_fish_index_path(family) do
-        %p= family.name_jp
-        - if ! family.name_la.blank?
-          %p= "#{family.name_en}/#{family.name_la}"
-        - else
-          %p= family.name_en
+        %h3= "#{family.name_jp}科"
+        %p<
+          = family.name_en if family.name_en
+          = "/#{family.name_la}" if ! family.name_la.blank?
