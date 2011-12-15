@@ -2,7 +2,6 @@
 # See https://github.com/jnicklas/carrierwave#readme
 
 class PhotoUploader < CarrierWave::Uploader::Base
-  # include CarrierWave::MiniMagick
   include CarrierWave::RMagick
   storage :file
 
