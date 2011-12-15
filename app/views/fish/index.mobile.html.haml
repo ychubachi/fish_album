@@ -12,5 +12,5 @@
         = image_tag fish.thumb_photo.file.mobile.url if fish.thumb_photo
         %h3= fish.name_jp
         %p<
-          = fish.name_en if fish.name_en
-          = "/#{fish.name_la}" if ! fish.name_la.blank?
+          = fish.name_la if ! fish.name_la.blank?
+          = " / #{fish.name_en}" if ! fish.name_en.blank?
