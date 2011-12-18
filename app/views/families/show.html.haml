@@ -11,3 +11,4 @@
 
 %button= link_to '戻る', families_path
 %button= link_to '編集', edit_family_path(@family)
+%button= link_to "新規（#{@family.name_jp}）", new_family_fish_path(@family)

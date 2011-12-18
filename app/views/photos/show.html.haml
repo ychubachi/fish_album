@@ -12,3 +12,4 @@
 %button= link_to '写真一覧', photos_path
 %button= link_to '編集', edit_photo_path(@photo)
 %button= link_to '削除', @photo, :confirm => 'まじでまじすか？', :method => :delete
+%button= link_to "新規（#{@photo.fish.name_jp}）", new_fish_photo_path(@photo.fish)
