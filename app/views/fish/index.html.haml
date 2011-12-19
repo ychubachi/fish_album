@@ -17,7 +17,7 @@
     %th 一覧
   - @fish.each do |fish|
     %tr
-      %td= fish.family.name_jp if fish.family
+      %td= "#{fish.family.name_jp}科" if fish.family
       %td= fish.name_jp
       - if fish.thumb_photo
         %td= image_tag fish.thumb_photo.file.thumb.url

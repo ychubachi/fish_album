@@ -1,8 +1,8 @@
 %h1 新規（魚）
-
 = render 'form'
+/%hr/
+/- if @fish.family
+/  %button= link_to "#{@fish.family.name_jp}科の写真一覧", family_fish_index_path(@fish.family)
 
-%hr
-%button= link_to '魚一覧', fish_index_path
-- if @fish.family
-  %button= link_to "（#{@fish.family.name_jp}科の魚一覧）", family_fish_path(@fish.family) 
+  
+  
