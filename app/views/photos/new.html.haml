@@ -1,5 +1,10 @@
-%h1 新規（写真）
+- if @photo.fish
+  %h1
+    - if @photo.fish.family
+      = "#{@photo.fish.family.name_jp}の#{@photo.fish.name_jp}の写真を追加"
+    - else
+      = "#{@photo.fish.name_jp}の写真を追加"
+- else
+  %h1 写真追加
 = render 'form'
-/%hr/
-/- if @photo.fish
-/  %button= link_to "#{@photo.fish.name_jp}の写真一覧", fish_photos_path(@photo.fish)
+

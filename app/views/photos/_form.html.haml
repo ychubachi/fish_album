@@ -1,13 +1,12 @@
-= form_for(@photo) do |f|
-  -if @photo.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:"
-      %ul
-        - @photo.errors.full_messages.each do |msg|
-          %li= msg
+-if @photo.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:"
+    %ul
+      - @photo.errors.full_messages.each do |msg|
+        %li= msg
 
+= form_for(@photo) do |f|
   = image_tag(@photo.file.mobile.url) if @photo.file?
-  %p ※URLまたはファイルのどちらかを入力してください
   %table
     %tr
       %td= f.label '魚'
@@ -18,5 +17,6 @@
     %tr
       %td= f.label 'ファイル'
       %td= f.file_field :file
+  %p ※URLまたはファイルのどちらかを入力してください
   = f.hidden_field :file_cache
   = f.submit '保存'

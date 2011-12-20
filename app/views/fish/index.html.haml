@@ -22,7 +22,7 @@
     %tr
       %td
         -  if fish.family
-          = link_to "#{fish.family.name_jp}科", family_fish_index_path(fish.family)
+          = link_to fish.family.name_jp, family_fish_index_path(fish.family)
       %td= link_to fish.name_jp, fish_photos_path(fish)
       %td= fish.name_la
       %td= fish.name_en
