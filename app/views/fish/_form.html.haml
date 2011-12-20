@@ -1,4 +1,3 @@
-- puts 'fish/_form.html.haml'
 -if @fish.errors.any?
   #error_explanation
     %h2= "#{pluralize(@fish.errors.count, "error")} prohibited this fish from being saved:"
@@ -7,32 +6,31 @@
         %li= msg
 
 = form_for(@fish) do |f|
-  %table        
-    %tr
-      %td= f.label '科'
-      %td= f.collection_select(:family_id, Family.all, :id, :name_jp)
-    %tr
-      %td= f.label :name_jp
-      %td= f.text_field :name_jp
-    %tr
-      %td= f.label :description_jp
-      %td= f.text_area :description_jp
-    %tr
-      %td= f.label :nickname_jp
-      %td= f.text_field :nickname_jp
-    %tr
-      %td= f.label :name_en
-      %td= f.text_field :name_en
-    %tr
-      %td= f.label :name_la
-      %td= f.text_field :name_la
+  .field
+    = f.label '科'
+    = f.collection_select(:family_id, Family.all, :id, :name_jp)
+  .field
+    = f.label :name_jp
+    = f.text_field :name_jp
+  .field
+    = f.label :description_jp
+    = f.text_area :description_jp
+  .field
+    = f.label :nickname_jp
+    = f.text_field :nickname_jp
+  .field
+    = f.label :name_la
+    = f.text_field :name_la
+  .field
+    = f.label :name_en
+    = f.text_field :name_en
   - if @fish.id    
     %p 代表的な写真
-    %table
+    %ol
       - Photo.where("fish_id = #{@fish.id}").each do |photo|
-        %tr
-          %td= f.radio_button(:thumb_photo_id, photo.id)
-          %td= image_tag(photo.file.thumb.url)
+        %li
+          = f.radio_button(:thumb_photo_id, photo.id)
+          = image_tag(photo.file.thumb.url)
   .actions
     = f.submit '保存'
   

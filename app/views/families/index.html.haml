@@ -10,7 +10,7 @@
     %th.index 一覧
   - @families.each do |family|
     %tr
-      %td= link_to "#{family.name_jp}科", family_fish_index_path(family)
+      %td= link_to family.name_jp, family_fish_index_path(family)
       %td= family.name_la
       %td= family.name_en
       %td.operation

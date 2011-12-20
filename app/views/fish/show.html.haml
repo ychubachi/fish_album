@@ -1,26 +1,24 @@
+%hr  
 - if @fish.thumb_photo
   = image_tag @fish.thumb_photo.file.mobile.url
-
-%table
-  %tr
-    %td= t '科'
-    %td= "#{@fish.family.name_jp}科"
-  %tr
-    %td= t 'activerecord.attributes.fish.name_jp'
-    %td= @fish.name_jp
-  %tr
-    %td= t 'activerecord.attributes.fish.nickname_jp'
-    %td= @fish.nickname_jp
-  %tr
-    %td= t 'activerecord.attributes.fish.description_jp'
-    %td= @fish.description_jp
-  %tr
-    %td= t 'activerecord.attributes.fish.name_en'
-    %td= @fish.name_en
-  %tr
-    %td= t 'activerecord.attributes.fish.name_la'
-    %td= @fish.name_la
-
+.field
+  = t '科'
+  = @fish.family.name_jp
+.field
+  = t 'activerecord.attributes.fish.name_jp'
+  = @fish.name_jp
+.field
+  = t 'activerecord.attributes.fish.nickname_jp'
+  = @fish.nickname_jp
+.field
+  = t 'activerecord.attributes.fish.description_jp'
+  = @fish.description_jp
+.field
+  = t 'activerecord.attributes.fish.name_en'
+  = @fish.name_en
+.field
+  = t 'activerecord.attributes.fish.name_la'
+  = @fish.name_la
 %hr  
 %button= link_to '編集', edit_fish_path(@fish)
 %button= link_to '削除', @fish, :confirm => 'まじでまじすか？', :method => :delete

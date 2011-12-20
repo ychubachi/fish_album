@@ -1,15 +1,15 @@
-%table
-  %tr 
-    %td 和名:
-    %td= "#{@family.name_jp}科"
-  %tr
-    %td 英名:
-    %td= @family.name_en
-  %tr
-    %td 学名:
-    %td= @family.name_la
-
+%hr/
+.field
+  和名:
+  = @family.name_jp
+.field
+  学名:
+  = @family.name_la
+.field
+  英名:
+  = @family.name_en
+%hr/
 %button= link_to '編集', edit_family_path(@family)
 %button= link_to '削除', @family, :confirm => 'まじでまじすか？', :method => :delete
-%button= link_to "#{@family.name_jp}科の魚一覧", family_fish_index_path(@family)
-%button= link_to "#{@family.name_jp}科の魚追加", new_family_fish_path(@family)
+%button= link_to "#{@family.name_jp}の魚一覧", family_fish_index_path(@family)
+%button= link_to "#{@family.name_jp}の魚追加", new_family_fish_path(@family)

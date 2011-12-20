@@ -2,6 +2,7 @@
   - if @fish
     %h1= "#{@fish.name_jp}の写真一覧"
     %button= link_to "#{@fish.name_jp}の写真を追加", new_fish_photo_path(@fish)
+    %button= link_to "#{@fish.name_jp}の情報を編集", edit_fish_path(@fish)
   - else
     %h1 写真一覧
     %button= link_to '写真を追加', new_photo_path
@@ -20,7 +21,7 @@
     %tr
       %td
         -  if photo.fish and photo.fish.family
-          =link_to "#{photo.fish.family.name_jp}科", family_fish_index_path(photo.fish.family)
+          =link_to photo.fish.family.name_jp, family_fish_index_path(photo.fish.family)
       %td
         - if photo.fish
           =link_to photo.fish.name_jp, fish_photos_path(photo.fish)
