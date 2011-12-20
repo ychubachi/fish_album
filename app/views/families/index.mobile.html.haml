@@ -5,7 +5,7 @@
   - @families.each do |family|
     %li
       = link_to family_fish_index_path(family) do
-        %h3= "#{family.name_jp}科"
+        %h3= "#{family.name_jp}"
         %p<
           = family.name_la if ! family.name_la.blank?
           = " / #{family.name_en}" if ! family.name_en.blank?

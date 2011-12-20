@@ -1,7 +1,7 @@
 = content_for :header do
   %h1
     - if @fish
-      = "#{@fish.name_jp}/#{@fish.name_en}"
+      = "#{@fish.name_jp}"
     - else
       Photos
 %p= @fish.description_jp if @fish
