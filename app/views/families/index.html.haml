@@ -1,21 +1,21 @@
 %header
   %h1 科一覧
-  %button= link_to '新規（科）', new_family_path
+  %button= link_to '科を追加', new_family_path
 %table
   %tr
     %th 和名
-    %th 英名
     %th 学名
+    %th 英名
     %th.operation 操作
     %th.index 一覧
   - @families.each do |family|
     %tr
-      %td= "#{family.name_jp}科"
-      %td= family.name_en
+      %td= link_to "#{family.name_jp}科", family_fish_index_path(family)
       %td= family.name_la
-      %td
+      %td= family.name_en
+      %td.operation
         %button= link_to '表示', family
         %button= link_to '編集', edit_family_path(family)
         %button= link_to '削除', family, :confirm => 'まじですか？', :method => :delete
-      %td
+      %td.index
         %button= link_to '魚', family_fish_index_path(family)

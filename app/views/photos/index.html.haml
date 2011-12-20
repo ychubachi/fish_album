@@ -1,25 +1,33 @@
 %header
   - if @fish
     %h1= "#{@fish.name_jp}の写真一覧"
-    %button= link_to "#{@fish.name_jp}の新規写真", new_fish_photo_path(@fish)
+    %button= link_to "#{@fish.name_jp}の写真を追加", new_fish_photo_path(@fish)
   - else
     %h1 写真一覧
-    %button= link_to '新規（写真）', new_photo_path
+    %button= link_to '写真を追加', new_photo_path
 
 %table
   %tr
-    %th ID
     %th 科
     %th 魚
-    %th 写真
+    %th 学名
+    %th 英名
+    %th ID
+    %th.photo 写真
     %th サイズ
     %th.operation 操作
   - @photos.each do |photo|
     %tr
+      %td
+        -  if photo.fish and photo.fish.family
+          =link_to "#{photo.fish.family.name_jp}科", family_fish_index_path(photo.fish.family)
+      %td
+        - if photo.fish
+          =link_to photo.fish.name_jp, fish_photos_path(photo.fish)
+      %td= photo.fish.name_la if photo.fish
+      %td= photo.fish.name_en if photo.fish
       %td= photo.id
-      %td= "#{photo.fish.family.name_jp}科" if photo.fish and photo.fish.family
-      %td= photo.fish.name_jp if photo.fish
-      %td= image_tag(photo.file.thumb.url)
+      %td.photo= image_tag(photo.file.thumb.url)
       %td= photo.file.get_geometry
       %td
         - if @fish

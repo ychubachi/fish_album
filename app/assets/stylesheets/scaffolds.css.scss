@@ -1,70 +1,85 @@
-$primary-1: #3016B0;
-$primary-2: #3C2D84;
-$primary-3: #190773;
-$primary-4: #624AD8;
-$primary-5: #8170D8;
-
-$secondary-a-1: #F5001D;
-$secondary-a-2: #B72E3E;
-$secondary-a-3: #9F0013;
-$secondary-a-4: #FA3E54;
-$secondary-a-5: #FA7080;
-
-$secondary-b-1: #2DD700;
-$secondary-b-2: #41A128;
-$secondary-b-3: #1D8C00;
-$secondary-b-4: #5FEB3B;
-$secondary-b-5: #85EB6A;
-
-$complement-1: #FFCD00;
-$complement-2: #BFA330;
-$complement-3: #A68500;
-$complement-4: #FFD940;
-$complement-5: #FFE373;
+/* http://colorschemedesigner.com/#3r627--yiw0w0 */
+$primary:     #0075A7; /* blue */
+$secondary-a: #1C00B6; /* dark blue */
+$secondary-b: #35DB00; /* green */
+$complement:  #FF8700; /* orange */
+$white:       #FFFFFF;
+$black:       #000000;
 
 body {
-  background-color: lighten($primary-5, 30%);
-  color: black;
+  background-color: $white;
+  color: $black;
   font-family: "Verdana", "ヒラギノ角ゴ Pro W3", "ＭＳ ゴシック", "Osaka‐等幅";
   font-size: 13px;
-  line-height: 18px;
-  width: 800px; }
+  width: 800px;
+}
+
+.navbar {
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: right;
+}
 
 h1 {
-  border-style: solid;
-  border-width: 1px;
   font-size: 18px;
   line-height: 24px;
-  color: $primary-1;
-  background-color: $complement-5;
-  align: center; }
+  text-align: center;
+  color: $white;
+  background-color: $primary;
+}
 
 a {
-  color: $secondary-a-1;
-  &:visited {
-    color: #000; }
-  &:hover {
-    color: #fff;
-    background-color: #000; } }
+    color: $secondary-a;
+    text-decoration:none;
+}
 
 button {
-  color: $secondary-a-1;
-  background-color: $secondary-b-5;
-  height: 26px; }
+  background-color: $secondary-b;
+  height: 26px;
+
+  a {
+      &:link {}
+      &:visited {}
+      &:hover {
+	  color: $white;
+	  background-color: $complement;
+      }
+      &:active {}
+  }
+}
 
 table {
   width: 800px;
-  border-collapse: collapse; }
+  border-collapse: collapse;
+}
 
 th, td {
-  border: 1px solid $secondary-a-3;
-  padding: 4px; }
+  border: 1px solid $primary;
+  padding: 4px;
+}
 
 th {
-  color: $primary-1;
-  background-color: $complement-4; }
+  color: white;
+  background-color: $primary;
+}
 
-th.index {
-  width: 10%; }
-th.operation {
-  width: 20%; }
+.operation {
+  width: 20%;
+}
+
+.index {
+    width: 10%;
+    text-align: center;
+}
+
+.photo {
+    width: 10%;
+    text-align: center;
+}
