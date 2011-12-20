@@ -13,8 +13,8 @@
     %th 科
     %th 和名
     %th 代表写真
-    %th 操作
-    %th 一覧
+    %th.operation 操作
+    %th.index 一覧
   - @fish.each do |fish|
     %tr
       %td= "#{fish.family.name_jp}科" if fish.family

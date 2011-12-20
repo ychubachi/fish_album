@@ -1,27 +1,70 @@
+$primary-1: #3016B0;
+$primary-2: #3C2D84;
+$primary-3: #190773;
+$primary-4: #624AD8;
+$primary-5: #8170D8;
+
+$secondary-a-1: #F5001D;
+$secondary-a-2: #B72E3E;
+$secondary-a-3: #9F0013;
+$secondary-a-4: #FA3E54;
+$secondary-a-5: #FA7080;
+
+$secondary-b-1: #2DD700;
+$secondary-b-2: #41A128;
+$secondary-b-3: #1D8C00;
+$secondary-b-4: #5FEB3B;
+$secondary-b-5: #85EB6A;
+
+$complement-1: #FFCD00;
+$complement-2: #BFA330;
+$complement-3: #A68500;
+$complement-4: #FFD940;
+$complement-5: #FFE373;
+
 body {
-  background-color: #fff;
-  color: #000;
+  background-color: lighten($primary-5, 30%);
+  color: black;
   font-family: "Verdana", "ヒラギノ角ゴ Pro W3", "ＭＳ ゴシック", "Osaka‐等幅";
   font-size: 13px;
-  line-height: 18px; }
+  line-height: 18px;
+  width: 800px; }
+
+h1 {
+  border-style: solid;
+  border-width: 1px;
+  font-size: 18px;
+  line-height: 24px;
+  color: $primary-1;
+  background-color: $complement-5;
+  align: center; }
 
 a {
-  color: #000;
+  color: $secondary-a-1;
   &:visited {
     color: #000; }
   &:hover {
     color: #fff;
     background-color: #000; } }
 
+button {
+  color: $secondary-a-1;
+  background-color: $secondary-b-5;
+  height: 26px; }
+
 table {
-  border-collapse: collapse;
-  border: 1px solid black;
-  border:1px solid green; }
+  width: 800px;
+  border-collapse: collapse; }
 
 th, td {
-  border: 1px solid black;
+  border: 1px solid $secondary-a-3;
   padding: 4px; }
 
 th {
-  background-color:green;
-  color:white; }
+  color: $primary-1;
+  background-color: $complement-4; }
+
+th.index {
+  width: 10%; }
+th.operation {
+  width: 20%; }
