@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe "admin/logout.html.haml" do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "desplays nothing"do
+    # nothing should be renderd
+  end
 end
