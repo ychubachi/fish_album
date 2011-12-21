@@ -1,6 +1,8 @@
-%header
+= content_for :header do
   %h1 科一覧
-  %button= link_to '科を追加', new_family_path
+  .menu
+    %button= link_to '科を追加', new_family_path
+
 %table
   %tr
     %th 和名

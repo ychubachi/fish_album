@@ -1,11 +1,13 @@
-%header
+= content_for :header do
   - if @fish
     %h1= "#{@fish.name_jp}の写真一覧"
-    %button= link_to "#{@fish.name_jp}の写真を追加", new_fish_photo_path(@fish)
-    %button= link_to "#{@fish.name_jp}の情報を編集", edit_fish_path(@fish)
+    .menu
+      %button= link_to "#{@fish.name_jp}の写真を追加", new_fish_photo_path(@fish)
+      %button= link_to "#{@fish.name_jp}の情報を編集", edit_fish_path(@fish)
   - else
     %h1 写真一覧
-    %button= link_to '写真を追加', new_photo_path
+    .menu
+      %button= link_to '写真を追加', new_photo_path
 
 %table
   %tr

@@ -1,3 +1,6 @@
+= content_for :header do
+  %h1 Search
+
 = form_tag do
   = label_tag :keyword
   = text_field_tag :keyword, nil, type: 'search'

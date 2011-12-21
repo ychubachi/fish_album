@@ -1,14 +1,15 @@
-%header
+= content_for :header do
   %h1
     - if @family
       = "#{@family.name_jp}の魚一覧"
     - else
       魚一覧
-  - if @family
-    %button= link_to "#{@family.name_jp}の魚を追加", new_family_fish_path(@family)
-    %button= link_to "#{@family.name_jp}の情報を編集", edit_family_path(@family)
-  - else
-    %button= link_to '魚を追加', new_fish_path
+  .menu
+    - if @family
+      %button= link_to "#{@family.name_jp}の魚を追加", new_family_fish_path(@family)
+      %button= link_to "#{@family.name_jp}の情報を編集", edit_family_path(@family)
+    - else
+      %button= link_to '魚を追加', new_fish_path
 %table
   %tr
     %th 科

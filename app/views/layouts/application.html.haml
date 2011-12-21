@@ -6,24 +6,27 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .navbar
+    %header
       - if notice
-        %p#notice= notice
-      %span
+        %div#notice
+          %p= notice
+      %ul#navbar
         - if admin?
-          %button= link_to '科一覧', families_path
-          %button= link_to '魚一覧', fish_index_path
-          %button= link_to '写真一覧', photos_path
-          %button= link_to '検索', search_path
-          %button= link_to 'モバイル画面', admin_logout_path
+          %li= link_to '科一覧', families_path
+          %li= link_to '魚一覧', fish_index_path
+          %li= link_to '写真一覧', photos_path
+          %li= link_to '検索', search_path
+          %li= link_to 'モバイル画面', admin_logout_path, { 'closs' => 'highlight' }
         - else
-          %button= link_to '管理画面', admin_login_path
-        %button= link_to 'Issues', 'https://github.com/ychubachi/fish_album/issues', target: '_blank'
-        %button= link_to 'Picasa', 'https://picasaweb.google.com/101680618216862629937', target: '_blank'
-    = yield
+          %li= link_to '管理画面', admin_login_path
+      = yield :header
+    %content    
+      = yield
     %footer
       %p 2011 Copyright (C) by D.S.Murai and Y.Chubachi
       %span
         参考
         = link_to 'Web魚図鑑', 'http://fishing-forum.org/zukan/index.htm', target: '_blank'
+        = link_to 'Issues', 'https://github.com/ychubachi/fish_album/issues', target: '_blank'
+        = link_to 'Picasa', 'https://picasaweb.google.com/101680618216862629937', target: '_blank'
 
