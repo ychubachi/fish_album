@@ -1,3 +1,11 @@
+= content_for :header do
+  %h1= @family.name_jp
+  .menu
+    %button= link_to '編集', edit_family_path(@family)
+    %button= link_to '削除', @family, :confirm => 'まじでまじすか？', :method => :delete
+    %button= link_to "#{@family.name_jp}の魚一覧", family_fish_index_path(@family)
+    %button= link_to "#{@family.name_jp}の魚追加", new_family_fish_path(@family)
+
 %hr/
 .field
   和名:
@@ -9,7 +17,3 @@
   英名:
   = @family.name_en
 %hr/
-%button= link_to '編集', edit_family_path(@family)
-%button= link_to '削除', @family, :confirm => 'まじでまじすか？', :method => :delete
-%button= link_to "#{@family.name_jp}の魚一覧", family_fish_index_path(@family)
-%button= link_to "#{@family.name_jp}の魚追加", new_family_fish_path(@family)
