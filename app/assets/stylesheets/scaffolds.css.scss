@@ -32,6 +32,9 @@ body {
 
     
     header {
+	div#notice {
+	    color: green;
+	}
 	ul#navbar {
 	    list-style-type: none;
 	    margin: 0;
