@@ -11,7 +11,7 @@ $page-width:  800px;
 body {
     background-color: $white;
     color: $black;
-    font-family: "Verdana", "ヒラギノ角ゴ Pro W3", "ＭＳ ゴシック", "Osaka‐等幅";
+    font-family: 'Meiryo', "Verdana", "ヒラギノ角ゴ Pro W3", "ＭＳ ゴシック", "Osaka‐等幅";
     font-size: 13px;
     width: $page-width;
     margin: 0;
@@ -25,11 +25,17 @@ body {
 	}
 	a {
 	    text-decoration: none;
-	    font-weight: bold;
 	    color: $white;
 	}
     }
 
+    a {
+	color: $secondary-a;
+	text-decoration: none;
+	&:hover, &:active {
+	    background-color: $complement;
+	}
+    }
     
     header {
 	div#notice {
