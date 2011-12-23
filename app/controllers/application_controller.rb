@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   def admin?
     return session[:admin] == true
   end
+
+  def fb?
+    return (request.path =~ /^\/fb/) != nil
+  end
 end
