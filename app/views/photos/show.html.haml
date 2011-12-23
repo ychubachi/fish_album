@@ -11,8 +11,8 @@
       %button= link_to "#{@photo.fish.name_jp}の写真一覧", fish_photos_path(@photo.fish)
       %button= link_to "#{@photo.fish.name_jp}の写真追加", new_fish_photo_path(@photo.fish)
 
-%hr\
+%hr
 %div{"data-role" => "content"}
   = image_tag(@photo.file_url) if @photo.file?
-%hr\
+%hr
 

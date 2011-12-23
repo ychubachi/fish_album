@@ -1,15 +1,10 @@
 FishAlbum::Application.routes.draw do
-  get  'mobile/index'
-  get  'mobile/settings'
-  post 'mobile/settings'
   get  "admin/index"
   get  "admin/login"
   get  "admin/logout"
 
   resources :families do
-    resources :fish do
-      resources :photos
-    end
+    resources :fish
   end
 
   resources :fish do
@@ -19,7 +14,6 @@ FishAlbum::Application.routes.draw do
   resources :photos
   resource :search
 
-  resource :setting
-
+  match "/admin/" => "admin#login"
   root to: "families#index"
 end
