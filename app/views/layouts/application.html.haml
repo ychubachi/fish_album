@@ -16,17 +16,14 @@
           %li= link_to '魚一覧', fish_index_path
           %li= link_to '写真一覧', photos_path
           %li= link_to '検索', search_path
-          %li= link_to 'モバイル画面', admin_logout_path, { 'closs' => 'highlight' }
+          %li= link_to 'モバイル画面', admin_logout_path, { 'class' => 'highlight' }
         - else
           %li= link_to '管理画面', admin_login_path
       = yield :header
     %article
       = yield
     %footer
-      %p 2011 Copyright (C) by D.S.Murai and Y.Chubachi
-      %span
-        参考
-        = link_to 'Web魚図鑑', 'http://fishing-forum.org/zukan/index.htm', target: '_blank'
-        = link_to 'Issues', 'https://github.com/ychubachi/fish_album/issues', target: '_blank'
-        = link_to 'Picasa', 'https://picasaweb.google.com/101680618216862629937', target: '_blank'
+      %p
+        2011 Copyright (C) by D.S.Murai and Y.C.
+        = link_to '[Issues]', 'https://github.com/ychubachi/fish_album/issues', target: '_blank'
 

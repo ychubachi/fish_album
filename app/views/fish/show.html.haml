@@ -6,25 +6,25 @@
     %button= link_to "#{@fish.name_jp}の写真一覧", fish_photos_path(@fish)
     %button= link_to "#{@fish.name_jp}の写真追加", new_fish_photo_path(@fish)
 
-%hr  
 - if @fish.thumb_photo
-  = image_tag @fish.thumb_photo.file.mobile.url
-.field
-  = t '科'
-  = @fish.family.name_jp
-.field
-  = t 'activerecord.attributes.fish.name_jp'
-  = @fish.name_jp
-.field
-  = t 'activerecord.attributes.fish.nickname_jp'
-  = @fish.nickname_jp
-.field
-  = t 'activerecord.attributes.fish.description_jp'
-  = @fish.description_jp
-.field
-  = t 'activerecord.attributes.fish.name_en'
-  = @fish.name_en
-.field
-  = t 'activerecord.attributes.fish.name_la'
-  = @fish.name_la
-%hr  
+  %div.center
+    = image_tag @fish.thumb_photo.file.mobile.url
+%table
+  %tr
+    %td= t '科'
+    %td= @fish.family.name_jp
+  %tr
+    %td= t 'activerecord.attributes.fish.name_jp'
+    %td= @fish.name_jp
+  %tr
+    %td= t 'activerecord.attributes.fish.nickname_jp'
+    %td= @fish.nickname_jp
+  %tr
+    %td= t 'activerecord.attributes.fish.description_jp'
+    %td= @fish.description_jp
+  %tr
+    %td= t 'activerecord.attributes.fish.name_la'
+    %td= @fish.name_la
+  %tr
+    %td= t 'activerecord.attributes.fish.name_en'
+    %td= @fish.name_en

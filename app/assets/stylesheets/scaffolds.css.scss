@@ -14,7 +14,7 @@ body {
     font-family: 'Meiryo', "Verdana", "ヒラギノ角ゴ Pro W3", "ＭＳ ゴシック", "Osaka‐等幅";
     font-size: 13px;
     width: $page-width;
-    margin: 0;
+    margin: auto;
 
     button {
 	margin: 0;
@@ -27,6 +27,11 @@ body {
 	    text-decoration: none;
 	    color: $white;
 	}
+    }
+
+    .center
+    {
+	text-align: center;
     }
 
     a {
@@ -63,10 +68,9 @@ body {
 		    &:hover, &:active {
 			background-color: $complement;
 		    }
-		}
-
-		a.highlight { /* DOES NOT WORK. WHY? */
-		    background-color: $complement;
+		    &.highlight {
+			background-color: lighten($complement, 20%);
+		    }
 		}
 	    }
 	}
@@ -100,6 +104,11 @@ body {
 	    th {
 		color: white;
 		background-color: $primary;
+	    }
+	    td {
+		input, textarea {
+		    width: 99%;
+		}
 	    }
 	}
     }
