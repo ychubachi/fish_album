@@ -1,6 +1,5 @@
 set :application, "fish_album"
-#set :repository,  "git@github.com:ychubachi/fish_album.git"
-set :repository,  "origin"
+set :repository,  "git@github.com:ychubachi/fish_album.git"
 set :deploy_to, "/home/rails/fish_album"
 set :use_sudo, false
 
