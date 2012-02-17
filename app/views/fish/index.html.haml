@@ -16,6 +16,7 @@
     %th 和名
     %th 学名
     %th 英名
+    %th 説明
     %th.photo 代表写真
     %th.operation 操作
     %th.index 一覧
@@ -27,6 +28,7 @@
       %td= link_to fish.name_jp, fish_photos_path(fish)
       %td= fish.name_la
       %td= fish.name_en
+      %td= fish.description_jp
       - if fish.thumb_photo
         %td.photo= image_tag fish.thumb_photo.file.thumb.url
       - else

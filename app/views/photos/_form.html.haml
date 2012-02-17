@@ -5,18 +5,25 @@
       - @photo.errors.full_messages.each do |msg|
         %li= msg
 
+= image_tag(@photo.file.mobile.url) if @photo.file?
 = form_for(@photo) do |f|
-  = image_tag(@photo.file.mobile.url) if @photo.file?
-  %table
-    %tr
-      %td= f.label '魚'
-      %td= collection_select(:photo, :fish_id, Fish.all, :id, :name_jp)
-    %tr
-      %td= f.label 'URL'
-      %td= f.text_field :remote_file_url
-    %tr
-      %td= f.label 'ファイル'
-      %td= f.file_field :file
-  %p ※URLまたはファイルのどちらかを入力してください
-  = f.hidden_field :file_cache
-  = f.submit '保存'
+  .field
+    %table
+      %tr
+        %td= f.label '魚'
+        %td
+          = f.grouped_collection_select(:fish_id, Family.all, :fish, :name_jp, :id, :name_jp)
+          = link_to '[科を追加する]', new_family_path
+          = link_to '[魚を追加する]', new_fish_path
+      %tr
+        %td= f.label 'URL'      
+        %td
+          = f.text_field :remote_file_url
+          = link_to '[Picasaを開く]', 'https://picasaweb.google.com/101680618216862629937', target: '_blank'
+      %tr
+        %td= f.label 'ファイル'
+        %td= f.file_field :file
+    %p ※URLまたはファイルのどちらかを入力してください
+    = f.hidden_field :file_cache
+  .action
+    = f.submit '保存'

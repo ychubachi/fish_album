@@ -1,10 +1,11 @@
-- if @photo.fish
-  %h1
-    - if @photo.fish.family
-      = "#{@photo.fish.family.name_jp}の#{@photo.fish.name_jp}の写真を追加"
-    - else
-      = "#{@photo.fish.name_jp}の写真を追加"
-- else
-  %h1 写真追加
+= content_for :header do
+  - if @photo.fish
+    %h1
+      - if @photo.fish.family
+        = "#{@photo.fish.family.name_jp}の#{@photo.fish.name_jp}の写真を追加"
+      - else
+        = "#{@photo.fish.name_jp}の写真を追加"
+  - else
+    %h1 写真追加
 = render 'form'
 

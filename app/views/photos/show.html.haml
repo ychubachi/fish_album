@@ -1,14 +1,18 @@
-%div{"data-role" => "header"}
-  - if @photo.fish
-    %h1 #{@photo.fish.name_jp}/#{@photo.fish.name_en}
-  - else
-    %h1 Photo
-%div{"data-role" => "content"}
-  = image_tag(@photo.file_url) if @photo.file?
+= content_for :header do
+  %div{"data-role" => "header"}
+    - if @photo.fish
+      %h1 #{@photo.fish.name_jp}
+    - else
+      %h1 Photo
+  .menu    
+    %button= link_to '編集', edit_photo_path(@photo)
+    %button= link_to '削除', @photo, :confirm => 'まじでまじすか？', :method => :delete
+    - if @photo.fish
+      %button= link_to "#{@photo.fish.name_jp}の写真一覧", fish_photos_path(@photo.fish)
+      %button= link_to "#{@photo.fish.name_jp}の写真追加", new_fish_photo_path(@photo.fish)
 
-%hr  
-%button= link_to '編集', edit_photo_path(@photo)
-%button= link_to '削除', @photo, :confirm => 'まじでまじすか？', :method => :delete
-- if @photo.fish
-  %button= link_to "#{@photo.fish.name_jp}の写真一覧", fish_photos_path(@photo.fish)
-  %button= link_to "#{@photo.fish.name_jp}の写真追加", new_fish_photo_path(@photo.fish)
+%hr
+%div.center
+  = image_tag(@photo.file_url) if @photo.file?
+%hr
+

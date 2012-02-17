@@ -11,10 +11,10 @@ $page-width:  800px;
 body {
     background-color: $white;
     color: $black;
-    font-family: "Verdana", "ヒラギノ角ゴ Pro W3", "ＭＳ ゴシック", "Osaka‐等幅";
+    font-family: 'Meiryo', "Verdana", "ヒラギノ角ゴ Pro W3", "ＭＳ ゴシック", "Osaka‐等幅";
     font-size: 13px;
     width: $page-width;
-    margin: 0;
+    margin: auto;
 
     button {
 	margin: 0;
@@ -25,13 +25,27 @@ body {
 	}
 	a {
 	    text-decoration: none;
-	    font-weight: bold;
 	    color: $white;
 	}
     }
 
+    .center
+    {
+	text-align: center;
+    }
+
+    a {
+	color: $secondary-a;
+	text-decoration: none;
+	&:hover, &:active {
+	    background-color: $complement;
+	}
+    }
     
     header {
+	div#notice {
+	    color: green;
+	}
 	ul#navbar {
 	    list-style-type: none;
 	    margin: 0;
@@ -54,10 +68,9 @@ body {
 		    &:hover, &:active {
 			background-color: $complement;
 		    }
-		}
-
-		a.highlight { /* DOES NOT WORK. WHY? */
-		    background-color: $complement;
+		    &.highlight {
+			background-color: lighten($complement, 20%);
+		    }
 		}
 	    }
 	}
@@ -80,7 +93,7 @@ body {
 	}
     }
 
-    content {
+    article {
 	table {
 	    width: 800px;
 	    border-collapse: collapse;
@@ -91,6 +104,11 @@ body {
 	    th {
 		color: white;
 		background-color: $primary;
+	    }
+	    td {
+		input, textarea {
+		    width: 99%;
+		}
 	    }
 	}
     }
